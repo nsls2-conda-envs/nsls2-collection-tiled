@@ -10,7 +10,7 @@ extra_packages: "tmate mamba"
 channels: "-c conda-forge"
 #extra_cmd_before_install: "yum install mesa-libGL mesa-libGL-devel -y"
 extra_cmd_before_install: "yum install mesa-libGL -y"
-extra_cmd_after_install: "conda remove perl --force -y"
+extra_cmd_after_install: "pip install tiled[all]==0.1.0a60 databroker[all]==2.0.0b1; conda remove perl --force -y"
 extra_cmd_after_install: "pip install tiled==0.1.0a60 databroker==2.0.0b1; conda list"
 docker_upload:
   - ghcr
