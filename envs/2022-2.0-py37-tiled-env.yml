@@ -44,6 +44,7 @@ dependencies:
   - hdf5-external-filter-plugins-lz4
   - hxntools >=0.5.2
   - igor
+  - imageio <2.16.2
   - inflection
   - intake <=0.6.4
   - ipykernel
