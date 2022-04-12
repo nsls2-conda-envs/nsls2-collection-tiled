@@ -35,6 +35,9 @@ jobs:
       - name: checkout NSLS-II/conda-pack-template
         run: |
           git clone https://github.com/NSLS-II/conda-pack-template ${CONDA_PACK_TEMPLATE_DIR}
+          cd ${CONDA_PACK_TEMPLATE_DIR}
+          git fetch
+          git checkout pack-with-forgiveness
 
       - uses: conda-incubator/setup-miniconda@v2
         with:
