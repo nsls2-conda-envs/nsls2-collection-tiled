@@ -18,7 +18,6 @@ dependencies:
   - bluesky-kafka >=0.9.0  # [not win]
   - bluesky-live >=0.0.8
   - bluesky-queueserver
-  - bluesky-queueserver-api
   - bluesky-widgets >=0.0.10
   - boto3
   - chxtools
