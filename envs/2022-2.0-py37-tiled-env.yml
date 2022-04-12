@@ -108,7 +108,7 @@ dependencies:
   - scikit-beam >=0.0.24
   - scikit-learn
   - scipy
-  - silx >=0.15.2
+  - silx >=0.15.2,<1
   - sixtools
   - slackclient
   - smi-analysis
@@ -134,7 +134,7 @@ dependencies:
   # - xmidas >=0.1.1
   - xpdan >=0.8.2
   - xray-vision >=0.1.1
-  - xraylarch >=0.9.58
+  - xraylarch
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
