@@ -96,6 +96,11 @@ jobs:
           cp -v Dockerfile ${CONDA_PACK_TEMPLATE_RUNNER} artifacts/
           sudo chown -v $USER: artifacts/*
           ls -laF artifacts/
+
+          # Print the contents of the env .yml file to the terminal
+          cat artifacts/*.yml
+
+          # Print the checksums to the terminal
           cat artifacts/*sum.txt
 
       - name: datetime string
