@@ -1,4 +1,4 @@
-name: 2022-2.0-py39-tiled
+name: 2022-2.1-py39-tiled
 channels:
   - conda-forge
 dependencies:
@@ -25,7 +25,7 @@ dependencies:
   - conda-pack
   - csxtools
   - dask
-  - databroker-pack
+  - databroker >=2.0.0b1
   - dictdiffer
   - distributed
   - doi2bib
@@ -171,3 +171,10 @@ dependencies:
   - line_profiler
   - pyinstrument
   - pyperformance
+  #***************************************************************************#
+  #                                                                           #
+  #              Workaround while we wait for tiled conda package             #
+  #                                                                           #
+  #***************************************************************************#
+  - pip:
+    - tiled[all]
