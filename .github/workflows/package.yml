@@ -108,7 +108,7 @@ jobs:
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
-          export DATETIME_STRING=$(date +%F)
+          export DATETIME_STRING=$(date +%Y%m%d%H%M%S)
           echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
 
       # https://github.com/actions/upload-artifact
