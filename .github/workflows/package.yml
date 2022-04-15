@@ -77,8 +77,8 @@ jobs:
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
-          dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/nsls2-collection-py${PYTHONVER}-tiled.yml -f Dockerfile.j2)
-          runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/nsls2-collection-py${PYTHONVER}-tiled.yml -f runner.sh.j2)
+          dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f Dockerfile.j2)
+          runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f runner.sh.j2)
           echo "${dockerfile}"
           echo "${runner}"
           ls -la
