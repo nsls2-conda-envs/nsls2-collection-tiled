@@ -96,11 +96,30 @@ jobs:
           cp -v Dockerfile ${CONDA_PACK_TEMPLATE_RUNNER} artifacts/
           sudo chown -v $USER: artifacts/*
           ls -laF artifacts/
+          cat artifacts/*sum.txt
+
+      - name: datetime string
+        shell: bash -l {0}
+        run: |
+          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
+          set -vxeuo pipefail
+          export DATETIME_STRING=$(date +%F)
+          echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
 
       # https://github.com/actions/upload-artifact
       - name: upload artifacts
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-nsls2-collection-py${{ matrix.python-version }}-tiled-${{ env.DATETIME_STRING }}
+          path: artifacts
+          retention-days: 7
+
+      # https://github.com/actions/upload-artifact
+      - name: upload artifacts
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v2
         with:
           name: nsls2-collection-py${{ matrix.python-version }}-tiled
           path: artifacts
-          retention-days: 7
+          retention-days: 30
