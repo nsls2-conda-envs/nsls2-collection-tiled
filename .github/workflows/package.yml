@@ -2,7 +2,7 @@ name: package_env
 
 on:
   push:
-  pull_request:
+  # pull_request:
 
 jobs:
   generate_conda_packd_envs:
@@ -12,6 +12,8 @@ jobs:
       matrix:
         python-version: ["3.7", "3.9"]
       fail-fast: false
+    env:
+      TZ: America/New_York
 
     steps:
       - name: Set env.REPOSITORY_NAME  # just the repo, as opposed to org/repo
@@ -36,8 +38,6 @@ jobs:
         run: |
           git clone https://github.com/NSLS-II/conda-pack-template ${CONDA_PACK_TEMPLATE_DIR}
           cd ${CONDA_PACK_TEMPLATE_DIR}
-          git fetch
-          git checkout pack-with-forgiveness
 
       - uses: conda-incubator/setup-miniconda@v2
         with:
@@ -77,8 +77,8 @@ jobs:
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
-          dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/nsls2-collection-py${PYTHONVER}-tiled.yml -f Dockerfile.j2)
-          runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/nsls2-collection-py${PYTHONVER}-tiled.yml -f runner.sh.j2)
+          dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f Dockerfile.j2)
+          runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f runner.sh.j2)
           echo "${dockerfile}"
           echo "${runner}"
           ls -la
@@ -99,10 +99,38 @@ jobs:
           sudo chown -v $USER: artifacts/*
           ls -laF artifacts/
 
+          # Print the contents of the env .yml file to the terminal
+          echo "::group::env .yml file content"
+          cat artifacts/*.yml
+          echo "::endgroup::"
+
+          # Print the checksums to the terminal
+          cat artifacts/*sum.txt
+
+      - name: datetime string
+        shell: bash -l {0}
+        run: |
+          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
+          set -vxeuo pipefail
+          export DATETIME_STRING=$(date +%Y%m%d%H%M%S)
+          echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
+
       # https://github.com/actions/upload-artifact
       - name: upload artifacts
+        if: |
+          github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-nsls2-collection-py${{ matrix.python-version }}-tiled-${{ env.DATETIME_STRING }}
+          path: artifacts
+          retention-days: 7
+
+      # https://github.com/actions/upload-artifact
+      - name: upload artifacts
+        if: |
+          github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v2
         with:
           name: nsls2-collection-py${{ matrix.python-version }}-tiled
           path: artifacts
-          retention-days: 7
+          retention-days: 30
