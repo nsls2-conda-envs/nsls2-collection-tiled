@@ -1,4 +1,4 @@
-name: 2022-2.1-py39-tiled
+name: 2022-2.2-py39-tiled
 channels:
   - conda-forge
 dependencies:
@@ -87,6 +87,7 @@ dependencies:
   - photutils
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
+  - prefect
   - py4xs
   - pycentroids  # [not win]
   - pyepics >=3.4.2
@@ -108,7 +109,7 @@ dependencies:
   - sasview
   - scikit-beam >=0.0.24
   - scikit-learn
-  - scipy
+  - scipy >=1.8.0
   - silx
   - sixtools
   - slackclient
