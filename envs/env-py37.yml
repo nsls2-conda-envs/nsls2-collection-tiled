@@ -18,7 +18,8 @@ dependencies:
   - bluesky-kafka >=0.9.0  # [not win]
   - bluesky-live >=0.0.8
   - bluesky-queueserver
-  - bluesky-queueserver-api
+  # TODO: sort out conflicts with bluesky-queueserver-api
+  # - bluesky-queueserver-api
   - bluesky-widgets >=0.0.10
   - boto3
   - chxtools
@@ -131,14 +132,15 @@ dependencies:
   - tzlocal !=3.0
   - xlrd
   - xlwt
-  - xmidas >=0.1.1
+  # NOTE: xmidas depends on silx==0.15.2, while xraylarch>=0.9.58 requires silx>=1.
+  # - xmidas >=0.1.1
   - xpdan >=0.8.2
   - xray-vision >=0.1.1
   - xraylarch >=0.9.58
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  # NOTE: shadow3 causes conflict issues with scipy>=1.8 and xmidas.
+  # NOTE: shadow3 causes conflict issues with scipy>=1.8.
   # - shadow3
   - srwpy
   - xrt
