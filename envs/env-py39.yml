@@ -130,17 +130,15 @@ dependencies:
   - tzlocal !=3.0
   - xlrd
   - xlwt
-  # TODO: xmidas has a dependency of scipy>1.7 that is conflicting with some
-  # packages in this env (also conflicts with scipy>1.6). Need to resolve it
-  # first before including of the xmidas package.
-  # - xmidas >=0.1.1
+  - xmidas >=0.1.1
   - xpdan >=0.8.2
   - xray-vision >=0.1.1
   - xraylarch >=0.9.58
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  - shadow3
+  # NOTE: shadow3 causes conflict issues with scipy>=1.8 and xmidas.
+  # - shadow3
   - srwpy
   - xrt
   #***************************************************************************#
