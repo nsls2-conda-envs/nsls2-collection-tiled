@@ -132,8 +132,7 @@ dependencies:
   - tzlocal !=3.0
   - xlrd
   - xlwt
-  # NOTE: xmidas depends on silx==0.15.2, while xraylarch>=0.9.58 requires silx>=1.
-  # - xmidas >=0.1.1
+  - xmidas >=0.1.2
   - xpdan >=0.8.2
   - xray-vision >=0.1.1
   - xraylarch >=0.9.58
@@ -178,5 +177,6 @@ dependencies:
   #              Workaround while we wait for tiled conda package             #
   #                                                                           #
   #***************************************************************************#
+  - pip
   - pip:
     - tiled[all]
