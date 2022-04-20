@@ -16,11 +16,14 @@ jobs:
       TZ: America/New_York
 
     steps:
-      - name: Set env.REPOSITORY_NAME  # just the repo, as opposed to org/repo
+      - name: Set env vars
         shell: bash -l {0}
         run: |
-          export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}
+          export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}  # just the repo, as opposed to org/repo
           echo "REPOSITORY_NAME=${REPOSITORY_NAME}" >> $GITHUB_ENV
+
+          export DATETIME_STRING=$(date +%Y%m%d%H%M%S)
+          echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
 
       - name: Set non-secret environment variables
         shell: bash -l {0}
@@ -107,13 +110,23 @@ jobs:
           # Print the checksums to the terminal
           cat artifacts/*sum.txt
 
-      - name: datetime string
+      - name: contents of the env .yml file
         shell: bash -l {0}
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
-          export DATETIME_STRING=$(date +%Y%m%d%H%M%S)
-          echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
+
+          echo "::group::env .yml file content"
+          cat artifacts/*.yml
+          echo "::endgroup::"
+
+      - name: checksum files
+        shell: bash -l {0}
+        run: |
+          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
+          set -vxeuo pipefail
+
+          cat artifacts/*sum.txt
 
       # https://github.com/actions/upload-artifact
       - name: upload artifacts
@@ -125,7 +138,6 @@ jobs:
           path: artifacts
           retention-days: 7
 
-      # https://github.com/actions/upload-artifact
       - name: upload artifacts
         if: |
           github.ref == 'refs/heads/main'
