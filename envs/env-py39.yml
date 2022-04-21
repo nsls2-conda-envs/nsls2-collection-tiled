@@ -179,4 +179,5 @@ dependencies:
   #***************************************************************************#
   - pip
   - pip:
+    - bluesky-queueserver-api
     - tiled[all]
