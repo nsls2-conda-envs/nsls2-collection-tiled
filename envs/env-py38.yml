@@ -1,4 +1,4 @@
-name: 2022-2.1-py37-tiled
+name: 2022-2.2-py38-tiled
 channels:
   - conda-forge
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   #            Dependencies from the `nsls2-analysis` metapackage             #
   #                                                                           #
   #***************************************************************************#
-  - python >=3.7,<3.8
+  - python >=3.8,<3.9
   - amostra <=1.0
   - ansiwrap
   - area-detector-handlers
@@ -88,6 +88,7 @@ dependencies:
   - photutils
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
+  - prefect
   - py4xs
   - pycentroids  # [not win]
   - pyepics >=3.4.2
@@ -109,7 +110,7 @@ dependencies:
   - sasview
   - scikit-beam >=0.0.24
   - scikit-learn
-  - scipy
+  - scipy >=1.8.0
   - silx
   - sixtools
   - slackclient
@@ -124,23 +125,21 @@ dependencies:
   - suitcase-utils
   - sympy
   - toml
-  - tomopy
+  - tomopy >=1.11
   - tornado
   - tqdm
   - tzlocal !=3.0
   - xlrd
   - xlwt
-  # TODO: xmidas has a dependency of scipy>1.7 that is conflicting with some
-  # packages in this env (also conflicts with scipy>1.6). Need to resolve it
-  # first before including of the xmidas package.
-  # - xmidas >=0.1.1
+  - xmidas >=0.1.2
   - xpdan >=0.8.2
   - xray-vision >=0.1.1
   - xraylarch >=0.9.58
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  - shadow3
+  # NOTE: shadow3 causes conflict issues with scipy>=1.8.
+  # - shadow3
   - srwpy
   - xrt
   #***************************************************************************#
@@ -177,5 +176,6 @@ dependencies:
   #              Workaround while we wait for tiled conda package             #
   #                                                                           #
   #***************************************************************************#
+  - pip
   - pip:
     - tiled[all]
