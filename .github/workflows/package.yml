@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate_conda_packd_envs:
-    name: nsls2-collection-tiled conda-pack'd env with Python ${{ matrix.python-version }}
+    name: conda-pack'd env with Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -55,6 +55,7 @@ jobs:
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
           python3 -m pip install -r ${CONDA_PACK_TEMPLATE_DIR}/requirements.txt
+          python3 -m pip install shyaml
 
       - name: pip-install dev-dependencies
         run: |
@@ -75,11 +76,16 @@ jobs:
           conda config --show
           printenv | sort
 
-      - name: render nsls2-collection config
+      - name: render config
         shell: bash -l {0}
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
+
+          env_name=$(cat configs/config-py${PYTHONVER}.yml | shyaml get-value env_name)
+          export CONDA_PACK_ENV_NAME="${env_name}"
+          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
+
           dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f Dockerfile.j2)
           runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f runner.sh.j2)
           echo "${dockerfile}"
@@ -87,6 +93,7 @@ jobs:
           ls -la
           cat "${dockerfile}"
           cat "${runner}"
+
           export CONDA_PACK_TEMPLATE_RUNNER="${runner}"
           echo "CONDA_PACK_TEMPLATE_RUNNER=${CONDA_PACK_TEMPLATE_RUNNER}" >> $GITHUB_ENV
 
@@ -105,36 +112,35 @@ jobs:
       - name: contents of the env .yml file
         shell: bash -l {0}
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
-
-          echo "::group::env .yml file content"
-          cat artifacts/*.yml
-          echo "::endgroup::"
+          cat artifacts/${CONDA_PACK_ENV_NAME}.yml
 
       - name: checksum files
         shell: bash -l {0}
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
-
           cat artifacts/*sum.txt
 
       # https://github.com/actions/upload-artifact
-      - name: upload artifacts
+      - name: upload artifacts for branch
         if: |
           github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: test-nsls2-collection-py${{ matrix.python-version }}-tiled-${{ env.DATETIME_STRING }}
+          name: test-${{ env.CONDA_PACK_ENV_NAME }}-${{ env.DATETIME_STRING }}
           path: artifacts
           retention-days: 7
 
-      - name: upload artifacts
+      - name: upload artifacts for release
         if: |
           github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: nsls2-collection-py${{ matrix.python-version }}-tiled
+          name: ${{ env.CONDA_PACK_ENV_NAME }}
           path: artifacts
+          retention-days: 30
+
+      - name: upload artifacts for the env .yml file
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.CONDA_PACK_ENV_NAME }}.yml
+          path: artifacts/${{ env.CONDA_PACK_ENV_NAME}}.yml
           retention-days: 30
