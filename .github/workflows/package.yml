@@ -102,14 +102,6 @@ jobs:
           sudo chown -v $USER: artifacts/*
           ls -laF artifacts/
 
-          # Print the contents of the env .yml file to the terminal
-          echo "::group::env .yml file content"
-          cat artifacts/*.yml
-          echo "::endgroup::"
-
-          # Print the checksums to the terminal
-          cat artifacts/*sum.txt
-
       - name: contents of the env .yml file
         shell: bash -l {0}
         run: |
