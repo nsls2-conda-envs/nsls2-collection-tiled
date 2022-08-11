@@ -1,4 +1,4 @@
-name: 2022-2.4-py39-tiled
+name: 2022-3.0-py39-tiled
 channels:
   - conda-forge
 dependencies:
@@ -10,31 +10,32 @@ dependencies:
   - python >=3.9,<3.10
   - amostra <=1.0
   - ansiwrap
-  - area-detector-handlers
+  - area-detector-handlers <=0.0.9
   - arvpyf
   - attrs >=18.0
   - black
   - bluesky >=1.8.3
-  - bluesky-kafka >=0.9.0  # [not win]
+  # Might be able to remove this not win.
+  - bluesky-kafka >=0.9.1  # [not win]
   - bluesky-live >=0.0.8
-  - bluesky-queueserver
+  - bluesky-queueserver >=0.0.16
   # TODO: sort out conflicts with bluesky-queueserver-api
-  # - bluesky-queueserver-api
-  - bluesky-widgets >=0.0.10
+  # - bluesky-queueserver-api >=0.0.8
+  - bluesky-widgets >=0.0.13
   - boto3
   - chxtools
   - cmasher
   - conda-pack
   - csxtools
   - dask
-  - databroker >=2.0.0b2=*_1
+  - databroker >=2.0.0b8=*_1
   - dictdiffer
   - distributed
   - doi2bib
   - dpcmaps
   # - edrixs
   - eiger-io
-  - event-model >=1.17.2
+  - event-model >=1.18.0
   - fabio
   - ffmpeg >=4.0
   - flake8
@@ -66,7 +67,7 @@ dependencies:
   - memory_profiler
   - mendeleev
   - modestimage
-  - mxtools >=0.0.2
+  - mxtools >=0.0.6
   - napari >=0.4.11
   - natsort
   - netcdf4
@@ -76,11 +77,11 @@ dependencies:
   - nslsii >=0.4.0
   - numexpr
   - numpy >=1.14.0
-  - nyxtools >=0.0.3
+  - nyxtools >=0.0.10
   - oct2py
   - opencv
   - openpyxl
-  - ophyd >=1.6.4
+  - ophyd >=1.7.0
   - papermill
   - pdfstream
   - peakutils
@@ -101,7 +102,7 @@ dependencies:
   - pystackreg
   - python
   - python-graphviz
-  - pyxrf >=1.0.10
+  - pyxrf >=1.0.18
   - pyzbar  # [not win]
   - qt >=5.9.0
   - redis-py
@@ -179,4 +180,3 @@ dependencies:
   - pip
   - pip:
     - bluesky-queueserver-api
-    - tiled[all]
