@@ -14,7 +14,7 @@ dependencies:
   - arvpyf
   - attrs >=18.0
   - black
-  - bluesky >=1.8.3
+  - bluesky >=1.9.0
   # Might be able to remove this not win.
   - bluesky-kafka >=0.9.1  # [not win]
   - bluesky-live >=0.0.8
@@ -125,6 +125,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
+  - tiled >=0.1.0a70
   - toml
   - tomopy >=1.11
   - tornado
@@ -172,11 +173,6 @@ dependencies:
   - line_profiler
   - pyinstrument
   - pyperformance
-  #***************************************************************************#
-  #                                                                           #
-  #              Workaround while we wait for tiled conda package             #
-  #                                                                           #
-  #***************************************************************************#
   - pip
   - pip:
     - bluesky-queueserver-api
