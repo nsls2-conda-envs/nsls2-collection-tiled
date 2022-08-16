@@ -99,7 +99,7 @@ dependencies:
   - pystackreg
   - python
   - python-graphviz
-  - pyxrf >=1.0.10
+  - pyxrf >=1.0.18
   - pyzbar  # [not win]
   - qt >=5.9.0
   - redis-py
