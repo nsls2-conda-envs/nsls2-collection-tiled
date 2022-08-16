@@ -19,7 +19,7 @@ dependencies:
   - bluesky-live >=0.0.8
   - bluesky-queueserver >=0.0.16
   - bluesky-queueserver-api
-  - bluesky-widgets >=0.0.10
+  - bluesky-widgets >=0.0.13
   - boto3
   - chxtools
   - cmasher
