@@ -122,7 +122,6 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a70
   - toml
   - tomopy >=1.11
   - tornado
@@ -170,3 +169,5 @@ dependencies:
   - pyinstrument
   - pyperformance
   - pip
+  - pip:
+    - tiled[all]
