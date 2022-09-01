@@ -15,7 +15,6 @@ dependencies:
   - attrs >=18.0
   - black
   - bluesky >=1.9.0
-  # Might be able to remove this not win.
   - bluesky-kafka >=0.9.1
   - bluesky-live >=0.0.8
   - bluesky-queueserver >=0.0.16
