@@ -1,4 +1,4 @@
-name: 2022-2.4-py39-tiled
+name: 2022-3.1-py39-tiled
 channels:
   - conda-forge
 dependencies:
@@ -10,31 +10,31 @@ dependencies:
   - python >=3.9,<3.10
   - amostra <=1.0
   - ansiwrap
-  - area-detector-handlers
+  - area-detector-handlers >=0.0.9
   - arvpyf
   - attrs >=18.0
   - black
-  - bluesky >=1.8.3
-  - bluesky-kafka >=0.9.0  # [not win]
+  - bluesky >=1.9.0
+  - bluesky-kafka >=0.9.1
   - bluesky-live >=0.0.8
-  - bluesky-queueserver
+  - bluesky-queueserver >=0.0.16
   # TODO: sort out conflicts with bluesky-queueserver-api
-  # - bluesky-queueserver-api
-  - bluesky-widgets >=0.0.10
+  # - bluesky-queueserver-api >=0.0.8
+  - bluesky-widgets >=0.0.13
   - boto3
   - chxtools
   - cmasher
   - conda-pack
   - csxtools
   - dask
-  - databroker >=2.0.0b2=*_1
+  - databroker >=2.0.0b8=*_1
   - dictdiffer
   - distributed
   - doi2bib
   - dpcmaps
   # - edrixs
   - eiger-io
-  - event-model >=1.17.2
+  - event-model >=1.18.0
   - fabio
   - ffmpeg >=4.0
   - flake8
@@ -66,23 +66,23 @@ dependencies:
   - memory_profiler
   - mendeleev
   - modestimage
-  - mxtools >=0.0.2
+  - mxtools >=0.0.6
   - napari >=0.4.11
   - natsort
   - netcdf4
   - nexpy >=0.14.1
   - nodejs
   - nsls2-detector-handlers >=0.0.2
-  - nslsii >=0.4.0
+  - nslsii >=0.7.0
   - numexpr
   - numpy >=1.14.0
-  - nyxtools >=0.0.3
+  - nyxtools >=0.0.10
   - oct2py
   - opencv
   - openpyxl
-  - ophyd >=1.6.4
+  - ophyd >=1.7.0
   - papermill
-  - pdfstream
+  # - pdfstream
   - peakutils
   - periodictable
   - photutils
@@ -101,7 +101,7 @@ dependencies:
   - pystackreg
   - python
   - python-graphviz
-  - pyxrf >=1.0.10
+  - pyxrf >=1.0.18
   - pyzbar  # [not win]
   - qt >=5.9.0
   - redis-py
@@ -124,6 +124,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
+  - tiled >=0.1.0a70
   - toml
   - tomopy >=1.11
   - tornado
@@ -163,7 +164,7 @@ dependencies:
   - hklpy  # [linux]
   - hxnfly >=0.0.10
   - ppmac
-  - xpdacq
+  # - xpdacq
   # Debugging tools:
   - hunter
   - logging_tree
@@ -171,12 +172,6 @@ dependencies:
   - line_profiler
   - pyinstrument
   - pyperformance
-  #***************************************************************************#
-  #                                                                           #
-  #              Workaround while we wait for tiled conda package             #
-  #                                                                           #
-  #***************************************************************************#
   - pip
   - pip:
     - bluesky-queueserver-api
-    - tiled[all]
