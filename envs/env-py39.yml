@@ -16,7 +16,7 @@ dependencies:
   - black
   - bluesky >=1.9.0
   # Might be able to remove this not win.
-  - bluesky-kafka >=0.9.1  # [not win]
+  - bluesky-kafka >=0.9.1
   - bluesky-live >=0.0.8
   - bluesky-queueserver >=0.0.16
   # TODO: sort out conflicts with bluesky-queueserver-api
