@@ -82,7 +82,7 @@ dependencies:
   - openpyxl
   - ophyd >=1.7.0
   - papermill
-  - pdfstream
+  # - pdfstream
   - peakutils
   - periodictable
   - photutils
@@ -164,7 +164,7 @@ dependencies:
   - hklpy  # [linux]
   - hxnfly >=0.0.10
   - ppmac
-  - xpdacq
+  # - xpdacq
   # Debugging tools:
   - hunter
   - logging_tree
