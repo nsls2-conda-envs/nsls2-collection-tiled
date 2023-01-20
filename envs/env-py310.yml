@@ -65,7 +65,7 @@ dependencies:
   - memory_profiler
   - mendeleev
   - modestimage
-  - mxtools >=0.0.8
+  - mxtools >=1.0.1
   - napari >=0.4.17
   - natsort
   - netcdf4
@@ -75,7 +75,7 @@ dependencies:
   - nslsii >=0.8.0
   - numexpr
   - numpy >=1.20
-  - nyxtools >=0.0.10
+  - nyxtools >=0.0.11
   - oct2py
   - opencv
   - openpyxl
