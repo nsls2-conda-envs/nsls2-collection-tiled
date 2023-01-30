@@ -1,4 +1,4 @@
-name: 2023-1.0-py310-tiled
+name: 2023-1.1-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -72,7 +72,7 @@ dependencies:
   - nexpy >=0.14.8
   - nodejs
   - nsls2-detector-handlers >=0.0.2
-  - nslsii >=0.8.0
+  - nslsii >=0.9.0
   - numexpr
   - numpy >=1.20
   - nyxtools >=0.0.11
