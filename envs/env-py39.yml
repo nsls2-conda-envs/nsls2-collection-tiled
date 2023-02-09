@@ -1,4 +1,4 @@
-name: 2023-1.1-py39-tiled
+name: 2023-1.2-py39-tiled
 channels:
   - conda-forge
 dependencies:
@@ -24,9 +24,9 @@ dependencies:
   - chxtools
   - cmasher
   - conda-pack
-  - csxtools
+  - csxtools >=0.1.18
   - dask
-  - databroker >=2.0.0b13=*_0
+  - databroker >=2.0.0b14=*_0
   - dictdiffer
   - distributed
   - doi2bib
@@ -43,7 +43,7 @@ dependencies:
   - h5py !=3.4
   - hdf5-external-filter-plugins-bitshuffle
   - hdf5-external-filter-plugins-lz4
-  - hxntools >=0.5.2
+  - hxntools >=0.6.1
   - igor
   - imageio <2.16.2
   - inflection
@@ -65,7 +65,7 @@ dependencies:
   - memory_profiler
   - mendeleev
   - modestimage
-  - mxtools >=1.0.1
+  - mxtools >=1.0.2
   - napari >=0.4.17
   - natsort
   - netcdf4
@@ -75,11 +75,16 @@ dependencies:
   - nslsii >=0.9.0
   - numexpr
   - numpy >=1.20
-  - nyxtools >=0.0.11
+  - nyxtools >=0.0.12
   - oct2py
   - opencv
-  - openpyxl
   - ophyd >=1.7.0
+  # pandas and deps
+  - pandas
+  - openpyxl  # used by pandas .to_excel()
+  - pyarrow  # used by pandas .to_parquet()
+  - pytables  # used by pandas .to_hdf()
+  # end of pandas deps
   - papermill
   - pdfstream >=0.6.2
   - peakutils
@@ -100,7 +105,6 @@ dependencies:
   - pyqt >=5.12.0
   - pyqtgraph
   - pystackreg
-  - python
   - python-graphviz
   - pyxrf >=1.0.21
   - pyzbar
@@ -125,7 +129,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a80
+  - tiled >=0.1.0a83
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -135,7 +139,7 @@ dependencies:
   - xlwt
   - xmidas >=0.1.2
   - xray-vision >=0.1.1
-  - xraylarch >=0.9.60
+  - xraylarch >=0.9.66
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
@@ -161,7 +165,7 @@ dependencies:
   - slack-sdk
   # Beamline-specific packages
   - hklpy  # [linux]
-  - hxnfly >=0.0.10
+  - hxnfly >=0.0.11
   - ppmac
   - xpdacq >=1.1.4
   # Debugging tools:
@@ -173,4 +177,5 @@ dependencies:
   - pyperformance
   # ML:
   - gpytorch
+  - ortools-python
   - pytorch
