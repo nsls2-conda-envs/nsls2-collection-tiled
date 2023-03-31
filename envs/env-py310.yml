@@ -104,13 +104,13 @@ dependencies:
   - pymcr
   - pymongo >=3.7
   - pypdf2
-  - pyqt >=5.15.0
+  - pyqt >=5.12.0
   - pyqtgraph
   - pystackreg
   - python-graphviz
   - pyxrf >=1.0.23
   - pyzbar
-  - qt >=5.15.0
+  - qt >=5.12.0
   - redis-py
   - reportlab
   - requests
@@ -178,6 +178,7 @@ dependencies:
   - pyinstrument
   - pyperformance
   # ML:
+  - botorch
   - gpytorch
   - ortools-python
   - pytorch
