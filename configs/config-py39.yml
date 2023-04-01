@@ -1,5 +1,5 @@
-docker_image: "nsls2/linux-anvil-cos7-x86_64:latest"
-env_name: "2023-1.2-py39-tiled"
+docker_image: "quay.io/condaforge/linux-anvil-cos7-x86_64:latest"
+env_name: "2023-1.3-py39-tiled"
 conda_env_file: "env-py39.yml"
 conda_binary: "mamba"
 python_version: "3.9"
@@ -19,7 +19,7 @@ zenodo_metadata:
     title: "NSLS-II collection conda environment"
     upload_type: "software"
     description: "NSLS-II collection conda environment"
-    version: 2023-1.2-tiled
+    version: 2023-1.3-tiled
     creators:
       - name: Rakitin, Maksim
         affiliation: "Brookhaven National Laboratory"
