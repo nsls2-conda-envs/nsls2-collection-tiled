@@ -133,7 +133,7 @@ dependencies:
   - sympy
   - tiled >=0.1.0a91
   - toml
-  - tomopy >=1.14.0
+  - tomopy >=1.12.2
   - tornado
   - tqdm
   - tzlocal !=3.0
