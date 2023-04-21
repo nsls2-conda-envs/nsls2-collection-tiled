@@ -182,3 +182,6 @@ dependencies:
   - gpytorch
   - ortools-python
   - pytorch
+  - pip 
+  - pip:
+    - digautoprofiler
