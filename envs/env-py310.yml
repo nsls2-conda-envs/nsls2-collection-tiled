@@ -13,6 +13,7 @@ dependencies:
   - area-detector-handlers >=0.0.9
   - arvpyf
   - attrs >=18.0
+  - awkward
   - black
   - bluesky >=1.10.0
   - bluesky-kafka >=0.10.0
