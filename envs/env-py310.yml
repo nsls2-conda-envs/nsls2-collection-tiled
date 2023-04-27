@@ -16,6 +16,7 @@ dependencies:
   - awkward
   - black
   - bluesky >=1.10.0
+  - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
   - bluesky-queueserver >=0.0.18
