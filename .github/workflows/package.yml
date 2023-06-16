@@ -127,7 +127,7 @@ jobs:
         with:
           name: test-${{ env.CONDA_PACK_ENV_NAME }}-${{ env.DATETIME_STRING }}
           path: artifacts
-          retention-days: 7
+          retention-days: 14
 
       - name: upload artifacts for release
         if: |
@@ -136,11 +136,11 @@ jobs:
         with:
           name: ${{ env.CONDA_PACK_ENV_NAME }}
           path: artifacts
-          retention-days: 30
+          retention-days: 60
 
       - name: upload artifacts for the env .yml file
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.CONDA_PACK_ENV_NAME }}.yml
           path: artifacts/${{ env.CONDA_PACK_ENV_NAME}}.yml
-          retention-days: 30
+          retention-days: 60

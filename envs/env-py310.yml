@@ -1,4 +1,4 @@
-name: 2023-2.0-py310-tiled
+name: 2023-2.1-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -26,7 +26,7 @@ dependencies:
   - chxtools
   - cmasher
   - conda-pack
-  - csxtools >=0.1.18
+  - csxtools >=0.2
   - dash
   - dash-bootstrap-components
   - dask
@@ -76,7 +76,7 @@ dependencies:
   - nexpy >=0.14.8
   - nodejs
   - nsls2-detector-handlers >=0.0.2
-  - nslsii >=0.9.0
+  - nslsii >=0.9.1
   - numexpr
   - numpy >=1.20
   - nyxtools >=0.0.12
@@ -149,6 +149,7 @@ dependencies:
   - oscars
   - shadow3
   - srwpy
+  - sirepo-bluesky
   - xrt
   #***************************************************************************#
   #                                                                           #
@@ -156,8 +157,9 @@ dependencies:
   #                                                                           #
   #***************************************************************************#
   - bloptools >=0.2.0
-  - bluesky-darkframes
+  - bluesky-darkframes >=0.6.0
   - caproto
+  - emojis
   - happi
   - pexpect
   # - pydm
@@ -170,7 +172,9 @@ dependencies:
   # Beamline-specific packages
   - hklpy  # [linux]
   - hxnfly >=0.0.11
+  - kkcalc
   - ppmac
+  - pychx >=4.1.2
   - xpdacq >=1.1.4
   # Debugging tools:
   - hunter
