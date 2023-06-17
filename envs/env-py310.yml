@@ -30,7 +30,7 @@ dependencies:
   - dash
   - dash-bootstrap-components
   - dask
-  - databroker >=2.0.0b22=*_0
+  - databroker >=2.0.0b23
   - dictdiffer
   - distributed
   - doi2bib
@@ -133,7 +133,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a91
+  - tiled >=0.1.0a94
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -156,7 +156,7 @@ dependencies:
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  - bloptools >=0.2.0
+  - bloptools >=0.3.0
   - bluesky-darkframes >=0.6.0
   - caproto
   - emojis
