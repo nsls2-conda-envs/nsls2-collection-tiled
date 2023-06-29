@@ -1,4 +1,4 @@
-name: 2023-2.0-py310-tiled
+name: 2023-2.1-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -15,22 +15,22 @@ dependencies:
   - attrs >=18.0
   - awkward
   - black
-  - bluesky >=1.10.0
+  - bluesky >=1.11.0
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
-  - bluesky-queueserver >=0.0.18
-  - bluesky-queueserver-api >=0.0.9
-  - bluesky-widgets >=0.0.14
+  - bluesky-queueserver >=0.0.19
+  - bluesky-queueserver-api >=0.0.10
+  - bluesky-widgets >=0.0.15
   - boto3
   - chxtools
   - cmasher
   - conda-pack
-  - csxtools >=0.1.18
+  - csxtools >=0.2
   - dash
   - dash-bootstrap-components
   - dask
-  - databroker >=2.0.0b22=*_0
+  - databroker >=2.0.0b23
   - dictdiffer
   - distributed
   - doi2bib
@@ -75,14 +75,14 @@ dependencies:
   - netcdf4
   - nexpy >=0.14.8
   - nodejs
-  - nsls2-detector-handlers >=0.0.2
-  - nslsii >=0.9.0
+  - nsls2-detector-handlers >=0.0.3
+  - nslsii >=0.9.1
   - numexpr
   - numpy >=1.20
   - nyxtools >=0.0.12
   - oct2py
   - opencv
-  - ophyd >=1.7.0
+  - ophyd >=1.8.0
   # pandas and deps
   - pandas
   - openpyxl  # used by pandas .to_excel()
@@ -102,6 +102,7 @@ dependencies:
   - pyepics >=3.4.2
   - pyfai
   - pyfftw
+  - pymatgen >=2023.6.28
   - pymca
   - pymcr
   - pymongo >=3.7
@@ -133,7 +134,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a91
+  - tiled >=0.1.0a96
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -147,17 +148,19 @@ dependencies:
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  - shadow3
-  - srwpy
+  - shadow3 >=23.1.4
+  - srwpy >=4.0.0b1
+  - sirepo-bluesky >=0.6.2
   - xrt
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  - bloptools >=0.2.0
-  - bluesky-darkframes
+  - bloptools >=0.3.0
+  - bluesky-darkframes >=0.6.0
   - caproto
+  - emojis
   - happi
   - pexpect
   # - pydm
@@ -170,7 +173,9 @@ dependencies:
   # Beamline-specific packages
   - hklpy  # [linux]
   - hxnfly >=0.0.11
+  - kkcalc
   - ppmac
+  - pychx >=4.1.2
   - xpdacq >=1.1.4
   # Debugging tools:
   - hunter
