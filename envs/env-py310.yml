@@ -1,4 +1,4 @@
-name: 2023-2.1-py310-tiled
+name: 2023-3.0-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -15,7 +15,7 @@ dependencies:
   - attrs >=18.0
   - awkward
   - black
-  - bluesky >=1.11.0
+  - bluesky ==1.10.0
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -30,7 +30,7 @@ dependencies:
   - dash
   - dash-bootstrap-components
   - dask
-  - databroker >=2.0.0b23
+  - databroker >=2.0.0b29
   - dictdiffer
   - distributed
   - doi2bib
@@ -47,6 +47,7 @@ dependencies:
   - h5py !=3.4
   - hdf5-external-filter-plugins-bitshuffle
   - hdf5-external-filter-plugins-lz4
+  - historydict
   - hxntools >=0.6.1
   - igor
   - imageio
@@ -96,6 +97,7 @@ dependencies:
   - photutils
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
+  - pre-commit
   - prefect
   - py4xs
   - pycentroids
@@ -107,17 +109,17 @@ dependencies:
   - pymcr
   - pymongo >=3.7
   - pypdf2
-  - pyqt >=5.12.0
+  - pyqt >=5.15.0
   - pyqtgraph
   - pystackreg
   - python-graphviz
   - pyxrf >=1.0.23
   - pyzbar
-  - qt >=5.12.0
+  - qt >=5.15.0
   - redis-py
   - reportlab
   - requests
-  - sasview
+  # - sasview  # does not work with pyqt>=5.15
   - scikit-beam >=0.0.24
   - scikit-learn
   - scipy >=1.9
@@ -134,7 +136,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a96
+  - tiled >=0.1.0a106
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -152,6 +154,7 @@ dependencies:
   - srwpy >=4.0.0b1
   - sirepo-bluesky >=0.6.2
   - xrt
+  - zict <3.0.0
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
@@ -189,3 +192,4 @@ dependencies:
   - gpytorch
   - ortools-python
   - pytorch
+  - scikit-optimize
