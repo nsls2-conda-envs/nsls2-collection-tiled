@@ -113,7 +113,7 @@ dependencies:
   - pyqtgraph
   - pystackreg
   - python-graphviz
-  - pyxrf >=1.0.23
+  - pyxrf >=1.0.24
   - pyzbar
   - qt >=5.15.0
   - redis-py
