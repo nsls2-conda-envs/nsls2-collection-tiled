@@ -30,7 +30,7 @@ dependencies:
   - dash
   - dash-bootstrap-components
   - dask
-  - databroker >=2.0.0b29
+  - databroker >=2.0.0b30
   - dictdiffer
   - distributed
   - doi2bib
@@ -130,7 +130,7 @@ dependencies:
   - suitcase-csv
   - suitcase-json-metadata
   - suitcase-jsonl
-  - suitcase-mongo
+  - suitcase-mongo >=0.4.0
   - suitcase-msgpack
   - suitcase-specfile
   - suitcase-tiff >=0.4.0
