@@ -1,4 +1,4 @@
-name: 2023-3.0-py310-tiled
+name: 2023-3.1-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -22,7 +22,9 @@ dependencies:
   - bluesky-queueserver >=0.0.19
   - bluesky-queueserver-api >=0.0.10
   - bluesky-widgets >=0.0.15
+  - bokeh
   - boto3
+  - bottleneck
   - chxtools
   - cmasher
   - conda-pack
@@ -30,6 +32,10 @@ dependencies:
   - dash
   - dash-bootstrap-components
   - dask
+  - dask-image
+  - dask-jobqueue
+  - dask-ml
+  - dask-xgboost
   - databroker >=2.0.0b30
   - dictdiffer
   - distributed
@@ -48,6 +54,7 @@ dependencies:
   - hdf5-external-filter-plugins-bitshuffle
   - hdf5-external-filter-plugins-lz4
   - historydict
+  - hvplot
   - hxntools >=0.6.1
   - igor
   - imageio
@@ -83,6 +90,7 @@ dependencies:
   - nyxtools >=0.0.12
   - oct2py
   - opencv
+  - openmpi >=4.1.4
   - ophyd >=1.8.0
   # pandas and deps
   - pandas
@@ -99,6 +107,7 @@ dependencies:
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
   - prefect
+  - py-xgboost
   - py4xs
   - pycentroids
   - pyepics >=3.4.2
@@ -112,6 +121,7 @@ dependencies:
   - pyqt >=5.15.0
   - pyqtgraph
   - pystackreg
+  - python-blosc
   - python-graphviz
   - pyxrf >=1.0.24
   - pyzbar
@@ -123,6 +133,7 @@ dependencies:
   - scikit-beam >=0.0.24
   - scikit-learn
   - scipy >=1.9
+  - seaborn
   - silx
   - sixtools
   - slackclient
@@ -155,6 +166,9 @@ dependencies:
   - sirepo-bluesky >=0.6.2
   - xrt
   - zict <3.0.0
+  - pip:
+    - mimesis
+    - pyhyperscattering[all]
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
