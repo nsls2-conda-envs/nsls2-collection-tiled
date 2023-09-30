@@ -41,7 +41,7 @@ dependencies:
   - distributed
   - doi2bib
   - dpcmaps
-  - edrixs
+  # - edrixs
   - eiger-io
   - event-model >=1.19.2
   - fabio
