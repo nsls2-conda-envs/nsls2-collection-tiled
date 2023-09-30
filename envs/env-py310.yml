@@ -1,4 +1,4 @@
-name: 2023-3.1-py310-tiled
+name: 2023-3.2-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -85,7 +85,7 @@ dependencies:
   - nodejs
   - nsls2-detector-handlers >=0.0.3
   - nslsii >=0.9.1
-  - numexpr
+  - numexpr >=2.8.0
   - numpy >=1.20
   - nyxtools >=0.0.12
   - oct2py
@@ -193,7 +193,7 @@ dependencies:
   - kkcalc
   - ppmac
   - pychx >=4.1.2
-  - xpdacq >=1.1.4
+  - xpdacq ==1.0.0
   # Debugging tools:
   - hunter
   - logging_tree
