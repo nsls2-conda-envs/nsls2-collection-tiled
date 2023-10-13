@@ -1,4 +1,4 @@
-name: 2023-3.1-py310-tiled
+name: 2023-3.2-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -138,6 +138,7 @@ dependencies:
   - sixtools
   - slackclient
   - smi-analysis
+  - sqlalchemy >=2.0.20
   - suitcase-csv
   - suitcase-json-metadata
   - suitcase-jsonl
@@ -193,7 +194,7 @@ dependencies:
   - kkcalc
   - ppmac
   - pychx >=4.1.2
-  - xpdacq >=1.1.4
+  - xpdacq ==1.0.0
   # Debugging tools:
   - hunter
   - logging_tree
