@@ -8,6 +8,7 @@ dependencies:
   #                                                                           #
   #***************************************************************************#
   - python >=3.10,<3.11
+  - algotom
   - amostra <=1.0
   - ansiwrap
   - area-detector-handlers >=0.0.9
@@ -38,10 +39,11 @@ dependencies:
   - dask-xgboost
   - databroker >=2.0.0b30
   - dictdiffer
+  - discorpy
   - distributed
   - doi2bib
   - dpcmaps
-  - edrixs
+  # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
   - eiger-io
   - event-model >=1.19.2
   - fabio
@@ -85,7 +87,7 @@ dependencies:
   - nodejs
   - nsls2-detector-handlers >=0.0.3
   - nslsii >=0.9.1
-  - numexpr
+  - numexpr >=2.8.0
   - numpy >=1.20
   - nyxtools >=0.0.12
   - oct2py
