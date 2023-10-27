@@ -101,7 +101,7 @@ dependencies:
   - pytables  # used by pandas .to_hdf()
   # end of pandas deps
   - papermill
-  - pdfstream >=0.6.2
+  - pdfstream ==0.5.2  # same as in the 2022-2.0-py37 env, https://zenodo.org/records/6462525/files/2022-2.0-py37.yml
   - peakutils
   - periodictable
   - photutils
