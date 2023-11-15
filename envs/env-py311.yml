@@ -37,7 +37,7 @@ dependencies:
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b30
+  - databroker >=2.0.0b31
   - dictdiffer
   - discorpy
   - distributed
@@ -150,7 +150,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a106
+  - tiled >=0.1.0a109
   - toml
   - tomopy >=1.12.2
   - tornado
