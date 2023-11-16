@@ -1,4 +1,4 @@
-name: 2023-3.3-py310-tiled
+name: 2023-3.3-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   #            Dependencies from the `nsls2-analysis` metapackage             #
   #                                                                           #
   #***************************************************************************#
-  - python >=3.10,<3.11
+  - python >=3.11,<3.12
   - algotom
   - amostra <=1.0
   - ansiwrap
