@@ -2,6 +2,7 @@ name: 2023-3.3-py310-tiled
 channels:
   - conda-forge
   - pytorch
+  - nvidia
 dependencies:
   #***************************************************************************#
   #                                                                           #
