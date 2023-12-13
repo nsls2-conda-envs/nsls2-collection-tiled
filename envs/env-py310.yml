@@ -1,6 +1,8 @@
 name: 2023-3.3-py310-tiled
 channels:
   - conda-forge
+  - pytorch
+  - nvidia
 dependencies:
   #***************************************************************************#
   #                                                                           #
@@ -206,7 +208,8 @@ dependencies:
   - pyperformance
   # ML:
   - botorch
+  - cupy
   - gpytorch
   - ortools-python
-  - pytorch
+  - pytorch-cuda
   - scikit-optimize
