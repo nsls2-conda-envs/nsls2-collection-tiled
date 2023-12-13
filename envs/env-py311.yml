@@ -1,6 +1,7 @@
 name: 2023-3.3-py311-tiled
 channels:
   - conda-forge
+  - pytorch
 dependencies:
   #***************************************************************************#
   #                                                                           #
@@ -208,5 +209,5 @@ dependencies:
   - botorch
   - gpytorch
   - ortools-python
-  - pytorch
+  - pytorch-cuda
   - scikit-optimize
