@@ -26,7 +26,7 @@ dependencies:
   - bokeh
   - boto3
   - bottleneck
-  - broh5
+  # - broh5
   - chxtools
   - cmasher
   - conda-pack
