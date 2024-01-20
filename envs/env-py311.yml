@@ -99,7 +99,7 @@ dependencies:
   # pandas and deps
   - pandas
   - openpyxl  # used by pandas .to_excel()
-  - pyarrow  # used by pandas .to_parquet()
+  - pyarrow >=14.0.1  # used by pandas .to_parquet()
   - pytables  # used by pandas .to_hdf()
   # end of pandas deps
   - papermill
