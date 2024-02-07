@@ -173,7 +173,6 @@ dependencies:
   - sirepo-bluesky >=0.6.2
   - xrt
   - zict <3.0.0
-  - pipx
   - pip:
     - mimesis
     - pyhyperscattering[all]
