@@ -1,4 +1,4 @@
-name: 2024-1.0-py311-tiled
+name: 2024-1.1-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -38,7 +38,7 @@ dependencies:
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b33
+  - databroker >=2.0.0b36
   - dictdiffer
   - discorpy
   - distributed
@@ -147,13 +147,13 @@ dependencies:
   - suitcase-csv
   - suitcase-json-metadata
   - suitcase-jsonl
-  - suitcase-mongo >=0.4.0
+  - suitcase-mongo >=0.5.0
   - suitcase-msgpack
   - suitcase-specfile
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a113
+  - tiled >=0.1.0a114
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -172,6 +172,7 @@ dependencies:
   - sirepo-bluesky >=0.6.2
   - xrt
   - zict <3.0.0
+  - pipx
   - pip:
     - mimesis
     - pyhyperscattering[all]
