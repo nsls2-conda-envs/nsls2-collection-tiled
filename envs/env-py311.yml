@@ -111,7 +111,7 @@ dependencies:
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
-  - prefect
+  - prefect >=2.14
   - py-xgboost
   - py4xs
   - pycentroids
