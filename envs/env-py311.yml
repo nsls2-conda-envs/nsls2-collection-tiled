@@ -56,7 +56,7 @@ dependencies:
   - h5py !=3.4
   - hdf5-external-filter-plugins-bitshuffle
   - hdf5-external-filter-plugins-lz4
-  - hextools
+  - hextools >=0.1.1
   - historydict
   - hvplot
   - hxntools >=0.6.1
@@ -111,7 +111,7 @@ dependencies:
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
-  - prefect >=2.14
+  - prefect >=2.7
   - py-xgboost
   - py4xs
   - pycentroids
