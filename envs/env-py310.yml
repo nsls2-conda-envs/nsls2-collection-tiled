@@ -44,7 +44,7 @@ dependencies:
   - distributed
   - doi2bib
   - dpcmaps
-  # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
+  - edrixs  # conflicts caused by the latest numexpr, to resolve later.
   - eiger-io
   - event-model >=1.19.2
   - fabio
