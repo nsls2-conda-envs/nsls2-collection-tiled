@@ -16,7 +16,7 @@ dependencies:
   - attrs >=18.0
   - awkward
   - black
-  - bluesky >=1.12.0
+  - bluesky >=1.13.0a2
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -132,7 +132,7 @@ dependencies:
   - pyzbar
   - qt >=5.15.0
   - redis-dict
-  - redis-json-dict
+  # - redis-json-dict
   - redis-py
   - reportlab
   - requests
@@ -175,9 +175,12 @@ dependencies:
   - xrt
   - zict <3.0.0
   - pipx
+  - pip
   - pip:
     - mimesis
     - pyhyperscattering[all]
+    - redis-json-dict
+    # - ophyd-async[ca,pva]
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
