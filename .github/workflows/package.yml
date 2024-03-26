@@ -49,8 +49,6 @@ jobs:
           echo "CONDA_PACK_TEMPLATE_DIR=${CONDA_PACK_TEMPLATE_DIR}" >> $GITHUB_ENV
 
           env_name=$(cat configs/config-py${PYTHONVER}.yml | shyaml get-value env_name)
-          # env_name=$(cat configs/config-py${PYTHONVER}.yml | yq .env_name)
-          # env_name=$(cat configs/config-py${PYTHONVER}.yml | grep -e "^env_name:" | tail -n1 | cut -d ":" -f2 | sed 's/ //g; s/"//g')
           export CONDA_PACK_ENV_NAME=${env_name}
           echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
 
