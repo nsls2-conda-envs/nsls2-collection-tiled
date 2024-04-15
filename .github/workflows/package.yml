@@ -2,7 +2,9 @@ name: package_env
 
 on:
   push:
+  # TODO: react also on reopening the PR.
   # pull_request:
+  workflow_dispatch:
 
 jobs:
   generate_conda_packd_envs:
