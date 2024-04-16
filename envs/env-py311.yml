@@ -46,7 +46,7 @@ dependencies:
   - dpcmaps
   # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
   - eiger-io
-  - event-model >=1.19.2
+  - event-model >=1.20
   - fabio
   - ffmpeg >=4.0
   - flake8
@@ -149,13 +149,13 @@ dependencies:
   - suitcase-csv
   - suitcase-json-metadata
   - suitcase-jsonl
-  - suitcase-mongo >=0.5.0
+  - suitcase-mongo >=0.6.0
   - suitcase-msgpack
   - suitcase-specfile
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a116
+  - tiled >=0.1.0a117
   - toml
   - tomopy >=1.12.2
   - tornado
