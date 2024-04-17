@@ -155,7 +155,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a117
+  - tiled >=0.1.0a116
   - toml
   - tomopy >=1.12.2
   - tornado
