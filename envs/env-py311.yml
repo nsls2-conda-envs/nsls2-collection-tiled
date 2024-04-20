@@ -16,7 +16,6 @@ dependencies:
   - attrs >=18.0
   - awkward
   - black
-  - bluesky >=1.13.0a3
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -155,7 +154,6 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a116
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -177,6 +175,8 @@ dependencies:
   - pipx
   - pip
   - pip:
+    - bluesky >=1.13.0a3
+    - tiled[all] >=0.1.0a117
     - mimesis
     - pyhyperscattering[all]
     - redis-json-dict
