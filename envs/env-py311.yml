@@ -177,11 +177,12 @@ dependencies:
   - pip
   - pip:
     - bluesky >=1.13.0a3
-    - tiled[all] >=0.1.0a117
+    - digautoprofiler
     - mimesis
+    - ophyd-async[ca,pva]
     - pyhyperscattering[all]
     - redis-json-dict
-    # - ophyd-async[ca,pva]
+    - tiled[all] >=0.1.0a117
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
