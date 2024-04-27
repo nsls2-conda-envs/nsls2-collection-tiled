@@ -56,11 +56,20 @@ jobs:
 
           env | sort -u
 
-      - name: Setup umamba
-        uses: mamba-org/setup-micromamba@v1
+      - uses: conda-incubator/setup-miniconda@v3
         with:
+          python-version: ${{ matrix.python-version }}
+          mamba-version: "*"
+          channels: conda-forge
+          channel-priority: true
+          activate-environment: packaging
           environment-file: envs/env-py${{ env.PYTHONVER }}.yml
-          log-level: info
+
+      # - name: Setup umamba
+      #   uses: mamba-org/setup-micromamba@v1
+      #   with:
+      #     environment-file: envs/env-py${{ env.PYTHONVER }}.yml
+      #     log-level: info
 
       - name: Check env
         run: |
