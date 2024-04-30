@@ -19,7 +19,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -lvxeo pipefail {0}
 
     steps:
       - name: Checkout the code
@@ -55,6 +55,15 @@ jobs:
           echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
 
           env | sort -u
+
+      # - uses: conda-incubator/setup-miniconda@v3
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+      #     # mamba-version: "*"
+      #     channels: conda-forge
+      #     channel-priority: strict
+      #     activate-environment: packaging
+      #     environment-file: envs/env-py${{ env.PYTHONVER }}.yml
 
       - name: Setup umamba
         uses: mamba-org/setup-micromamba@v1

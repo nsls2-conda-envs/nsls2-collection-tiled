@@ -1,4 +1,4 @@
-name: 2024-1.1-py311-tiled
+name: 2024-2.0-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -16,7 +16,6 @@ dependencies:
   - attrs >=18.0
   - awkward
   - black
-  - bluesky >=1.13.0a3
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -63,6 +62,8 @@ dependencies:
   - igor
   - imageio
   - inflection
+  - ipyaggrid
+  - ipydatagrid
   - ipykernel
   - ipympl >=0.1.1
   - ipython >=7.20.0
@@ -155,7 +156,6 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0a116
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -170,17 +170,20 @@ dependencies:
   # Simulation packages:
   - oscars
   - shadow3 >=23.1.4
-  - srwpy >=4.0.0b1
+  - srwpy >=4.1.0
   - sirepo-bluesky >=0.6.2
   - xrt
   - zict <3.0.0
   - pipx
   - pip
   - pip:
+    - bluesky >=1.13.0a3
+    - digautoprofiler
     - mimesis
+    - ophyd-async[ca,pva]
     - pyhyperscattering[all]
     - redis-json-dict
-    # - ophyd-async[ca,pva]
+    - tiled[all] >=0.1.0a120
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
