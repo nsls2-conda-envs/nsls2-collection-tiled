@@ -49,6 +49,7 @@ dependencies:
   - fabio
   - ffmpeg >=4.0
   - flake8
+  - fpdf2
   - globus-sdk
   - graphviz
   - grid-strategy
@@ -129,6 +130,7 @@ dependencies:
   - pystackreg
   - python-blosc
   - python-graphviz
+  - python-pptx
   - pyxrf >=1.0.24
   - pyzbar
   - qt >=5.15.0
