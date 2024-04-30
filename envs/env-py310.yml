@@ -170,7 +170,7 @@ dependencies:
   # Simulation packages:
   - oscars
   - shadow3 >=23.1.4
-  - srwpy >=4.0.0b1
+  - srwpy >=4.1.0
   - sirepo-bluesky >=0.6.2
   - xrt
   - zict <3.0.0
@@ -183,7 +183,7 @@ dependencies:
     - ophyd-async[ca,pva]
     - pyhyperscattering[all]
     - redis-json-dict
-    - tiled[all] >=0.1.0a117
+    - tiled[all] >=0.1.0a120
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
