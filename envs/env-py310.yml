@@ -10,6 +10,7 @@ dependencies:
   - python >=3.10,<3.11
   - algotom
   - amostra <=1.0
+  - analysisstore >=0.0.6
   - ansiwrap
   - area-detector-handlers >=0.0.9
   - arvpyf
@@ -30,6 +31,7 @@ dependencies:
   - chxtools
   - cmasher
   - conda-pack
+  - conftrak >=0.0.9
   - csxtools >=0.2.1
   - dash
   - dash-bootstrap-components
