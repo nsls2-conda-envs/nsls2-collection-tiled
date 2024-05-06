@@ -1,4 +1,4 @@
-name: 2024-2.0-py311-tiled
+name: 2024-2.0-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   #            Dependencies from the `nsls2-analysis` metapackage             #
   #                                                                           #
   #***************************************************************************#
-  - python >=3.11,<3.12
+  - python >=3.10,<3.11
   - algotom
   - amostra <=1.0
   - analysisstore >=0.0.6

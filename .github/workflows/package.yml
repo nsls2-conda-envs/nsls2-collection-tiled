@@ -19,54 +19,59 @@ jobs:
 
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -lvxeo pipefail {0}
 
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Python for YAML CLI tools
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install YAML CLI tools
+        run: |
+          python3 -m pip install shyaml
+
       - name: Set env vars
         run: |
+          set -vxeuo pipefail
+
           export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}  # just the repo, as opposed to org/repo
           echo "REPOSITORY_NAME=${REPOSITORY_NAME}" >> $GITHUB_ENV
 
           export DATETIME_STRING=$(date +%Y%m%d%H%M%S)
           echo "DATETIME_STRING=${DATETIME_STRING}" >> $GITHUB_ENV
 
-      - name: Set non-secret environment variables
-        run: |
           export PYTHONVER=$(echo ${{ matrix.python-version }} | sed 's/\.//g')
           echo "PYTHONVER=${PYTHONVER}" >> $GITHUB_ENV
 
           export CONDA_PACK_TEMPLATE_DIR=${HOME}/conda-pack-template
           echo "CONDA_PACK_TEMPLATE_DIR=${CONDA_PACK_TEMPLATE_DIR}" >> $GITHUB_ENV
 
-      - name: checkout the code
-        uses: actions/checkout@v3
+          env_name=$(cat configs/config-py${PYTHONVER}.yml | shyaml get-value env_name)
+          export CONDA_PACK_ENV_NAME=${env_name}
+          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
 
-      - name: checkout NSLS-II/conda-pack-template
-        run: |
-          git clone https://github.com/NSLS-II/conda-pack-template ${CONDA_PACK_TEMPLATE_DIR}
-          cd ${CONDA_PACK_TEMPLATE_DIR}
+          env | sort -u
 
-      - uses: conda-incubator/setup-miniconda@v2
+      # - uses: conda-incubator/setup-miniconda@v3
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+      #     # mamba-version: "*"
+      #     channels: conda-forge
+      #     channel-priority: strict
+      #     activate-environment: packaging
+      #     environment-file: envs/env-py${{ env.PYTHONVER }}.yml
+
+      - name: Setup umamba
+        uses: mamba-org/setup-micromamba@v1
         with:
-          activate-environment: ${{ env.REPOSITORY_NAME }}
-          auto-update-conda: true
-          miniconda-version: "latest"
-          python-version: ${{ matrix.python-version }}
+          environment-file: envs/env-py${{ env.PYTHONVER }}.yml
+          log-level: info
 
-      - name: pip-install dependencies
-        run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
-          python3 -m pip install -r ${CONDA_PACK_TEMPLATE_DIR}/requirements.txt
-          python3 -m pip install shyaml
-
-      - name: pip-install dev-dependencies
-        run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
-          python3 -m pip install -r ${CONDA_PACK_TEMPLATE_DIR}/requirements-dev.txt
-
-      - name: check env
+      - name: Check env
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeuo pipefail
@@ -78,67 +83,54 @@ jobs:
           conda config --show
           printenv | sort
 
-      - name: render config
+      - name: Export files
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
           set -vxeo pipefail
 
-          env_name=$(cat configs/config-py${PYTHONVER}.yml | shyaml get-value env_name)
-          export CONDA_PACK_ENV_NAME="${env_name}"
-          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
+          export ARTIFACTS_DIR="$HOME/artifacts"
+          echo "ARTIFACTS_DIR=${ARTIFACTS_DIR}" >> $GITHUB_ENV
+          if [ ! -d "${ARTIFACTS_DIR}" ]; then
+              mkdir -v -p "${ARTIFACTS_DIR}"
+          fi
 
-          dockerfile=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f Dockerfile.j2)
-          runner=$(python3 ${CONDA_PACK_TEMPLATE_DIR}/render.py -c configs/config-py${PYTHONVER}.yml -f runner.sh.j2)
-          echo "${dockerfile}"
-          echo "${runner}"
-          ls -la
-          cat "${dockerfile}"
-          cat "${runner}"
+          # conda env export -n ${CONDA_PACK_ENV_NAME} -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml -c conda-forge --override-channels
+          conda env export -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
+          # Per https://conda.github.io/conda-pack/cli.html:
+          conda-pack -o ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz --ignore-missing-files --ignore-editable-packages
+          openssl sha256 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-sha256sum.txt
+          openssl md5 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-md5sum.txt
+          chmod -v 664 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}[.-]*
 
-          export CONDA_PACK_TEMPLATE_RUNNER="${runner}"
-          echo "CONDA_PACK_TEMPLATE_RUNNER=${CONDA_PACK_TEMPLATE_RUNNER}" >> $GITHUB_ENV
-
-      - name: run a build with Docker/Podman
+      - name: Contents of the env .yml file
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeo pipefail
-          cp -v ${CONDA_PACK_TEMPLATE_DIR}/export.sh .
-          bash ${CONDA_PACK_TEMPLATE_RUNNER}
-          ls -laF
-          cp -v Dockerfile ${CONDA_PACK_TEMPLATE_RUNNER} artifacts/
-          sudo chown -v $USER: artifacts/*
-          ls -laF artifacts/
+          cat ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
 
-      - name: contents of the env .yml file
+      - name: Checksum files
         run: |
-          cat artifacts/${CONDA_PACK_ENV_NAME}.yml
-
-      - name: checksum files
-        run: |
-          cat artifacts/*sum.txt
+          cat ${ARTIFACTS_DIR}/*sum.txt
 
       # https://github.com/actions/upload-artifact
-      - name: upload artifacts for branch
-        if: |
-          github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-${{ env.CONDA_PACK_ENV_NAME }}-${{ env.DATETIME_STRING }}
-          path: artifacts
-          retention-days: 14
-
-      - name: upload artifacts for release
-        if: |
-          github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.CONDA_PACK_ENV_NAME }}
-          path: artifacts
-          retention-days: 60
-
-      - name: upload artifacts for the env .yml file
-        uses: actions/upload-artifact@v3
+      - name: Upload artifacts for the env .yml file
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.CONDA_PACK_ENV_NAME }}.yml
-          path: artifacts/${{ env.CONDA_PACK_ENV_NAME}}.yml
+          path: ${{ env.ARTIFACTS_DIR }}/${{ env.CONDA_PACK_ENV_NAME }}.yml
+          retention-days: 60
+
+      - name: Upload artifacts for branch
+        if: |
+          github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-${{ env.CONDA_PACK_ENV_NAME }}-${{ env.DATETIME_STRING }}
+          path: ${{ env.ARTIFACTS_DIR }}
+          retention-days: 14
+
+      - name: Upload artifacts for release
+        if: |
+          github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.CONDA_PACK_ENV_NAME }}
+          path: ${{ env.ARTIFACTS_DIR }}
           retention-days: 60
