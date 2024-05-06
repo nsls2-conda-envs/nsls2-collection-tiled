@@ -1,4 +1,4 @@
-name: /home/runner/micromamba/envs/2024-2.0-py310-tiled
+name: 2024-2.0-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -1039,4 +1039,3 @@ dependencies:
       - watchgod==0.8.2
       - y-py==0.6.2
       - ypy-websocket==0.8.4
-prefix: /home/runner/micromamba/envs/2024-2.0-py310-tiled
