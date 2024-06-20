@@ -43,6 +43,8 @@ dependencies:
   - dask-xgboost
   - databroker >=2.0.0b45
   - dictdiffer
+  - diffpy.pdffit2
+  - diffpy.structure
   - discorpy
   - distributed
   - doi2bib
@@ -129,6 +131,7 @@ dependencies:
   - pymca
   - pymcr
   - pymongo >=3.7
+  - pyobjcryst
   - pypdf2
   - pyqt >=5.15.0
   - pyqtgraph
