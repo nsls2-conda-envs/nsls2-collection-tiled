@@ -1,4 +1,4 @@
-name: 2024-2.0-py311-tiled
+name: 2024-2.1-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -18,6 +18,7 @@ dependencies:
   - awkward
   - black
   - blosc-hdf5-plugin
+  # - bluesky >=1.13.0a3
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -27,7 +28,7 @@ dependencies:
   - bokeh
   - boto3
   - bottleneck
-  - broh5
+  # - broh5
   - chxtools
   - cmasher
   - conda-pack
@@ -35,12 +36,12 @@ dependencies:
   - csxtools >=0.2.1
   - dash
   - dash-bootstrap-components
-  - dask
+  - dask >=2023.9.0
   - dask-image
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b38
+  - databroker >=2.0.0b45
   - dictdiffer
   - discorpy
   - distributed
@@ -120,9 +121,11 @@ dependencies:
   - py4xs
   - pycentroids
   - pyepics >=3.4.2
-  - pyfai
+  - pyfai >=2024.5.0
   - pyfftw
-  - pymatgen >=2023.6.28
+  - pymatgen >=2024.5.1
+  - maggma >=0.66
+  - mp-api >=0.41.2
   - pymca
   - pymcr
   - pymongo >=3.7
@@ -133,7 +136,7 @@ dependencies:
   - python-blosc
   - python-graphviz
   - python-pptx
-  - pyxrf >=1.0.24
+  - pyxrf >=1.0.28
   - pyzbar
   - qt >=5.15.0
   - redis-dict
@@ -160,6 +163,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
+  - tiled >=0.1.0b4
   - toml
   - tomopy >=1.12.2
   - tornado
@@ -177,7 +181,7 @@ dependencies:
   - srwpy >=4.1.0
   - sirepo-bluesky >=0.6.2
   - xrt
-  - zict <3.0.0
+  - zict
   - pipx
   - pip
   - pip:
@@ -187,13 +191,12 @@ dependencies:
     - ophyd-async[ca,pva]
     - pyhyperscattering[all]
     - redis-json-dict
-    - tiled[all] >=0.1.0a120
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  - bloptools >=0.6.1
+  - bloptools >=0.7.0
   - bluesky-darkframes >=0.6.0
   - caproto
   - emojis
