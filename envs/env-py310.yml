@@ -105,7 +105,6 @@ dependencies:
   - blinker=1.8.1=pyhd8ed1ab_0
   - blosc=1.21.5=h0f2a231_0
   - bluesky-adaptive=0.3.1=pyhd8ed1ab_0
-  - bluesky-base=1.13.0a3=pyhd8ed1ab_0
   - bluesky-darkframes=0.6.0=pyhd8ed1ab_0
   - bluesky-kafka=0.10.0=pyhd8ed1ab_0
   - bluesky-live=0.0.8=pyhd8ed1ab_0
