@@ -812,7 +812,6 @@ dependencies:
   - simple-websocket=1.0.0=pyhd8ed1ab_1
   - simplejson=3.19.2=py310h2372a71_0
   - sip=6.7.12=py310hc6cd4ac_0
-  - sirepo-bluesky=0.7.2=pyhd8ed1ab_0
   - six=1.16.0=pyh6c4a22f_0
   - sixtools=0.0.3=pyhd8ed1ab_0
   - slack-sdk=3.27.1=pyha770c72_0
