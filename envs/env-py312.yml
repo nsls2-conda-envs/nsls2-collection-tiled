@@ -1,4 +1,4 @@
-name: 2024-2.1-py311-tiled
+name: 2024-2.1-py312-tiled
 channels:
   - conda-forge
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   #            Dependencies from the `nsls2-analysis` metapackage             #
   #                                                                           #
   #***************************************************************************#
-  - python >=3.11,<3.12
+  - python >=3.12,<3.13
   - algotom
   - amostra <=1.0
   - analysisstore >=0.0.6
-  - ansiwrap
+  # - ansiwrap
   - area-detector-handlers >=0.0.9
   - arvpyf
   - attrs >=18.0
@@ -124,7 +124,7 @@ dependencies:
   - pycentroids
   - pyepics >=3.4.2
   - pyfai >=2024.5.0
-  - pyfftw
+  # - pyfftw  # no build for py312 as of 2024-06-20
   - pymatgen >=2024.5.1
   - maggma >=0.66
   - mp-api >=0.41.2
@@ -180,18 +180,20 @@ dependencies:
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  - shadow3 >=23.1.4
+  # - shadow3 >=23.1.4
   - srwpy >=4.1.0
-  - sirepo-bluesky >=0.6.2
+  # - sirepo-bluesky >=0.6.2
   - xrt
   - zict
   - pipx
   - pip
   - pip:
+    - ansiwrap
     - bluesky >=1.13.0a3
+    - bloptools >=0.7.0
     - digautoprofiler
     - mimesis
-    - ophyd-async[ca,pva]
+    # - ophyd-async[ca]
     - pyhyperscattering[all]
     - redis-json-dict
   #***************************************************************************#
@@ -199,7 +201,6 @@ dependencies:
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  - bloptools >=0.7.0
   - bluesky-darkframes >=0.6.0
   - caproto
   - emojis
@@ -229,6 +230,6 @@ dependencies:
   # ML:
   - botorch
   - gpytorch
-  - ortools-python
+  # - ortools-python
   - pytorch
   - scikit-optimize
