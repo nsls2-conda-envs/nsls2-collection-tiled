@@ -193,7 +193,7 @@ dependencies:
     - bloptools >=0.7.0
     - digautoprofiler
     - mimesis
-    - ophyd-async[ca,pva]
+    - ophyd-async[ca]
     - pyhyperscattering[all]
     - redis-json-dict
   #***************************************************************************#
