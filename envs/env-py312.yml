@@ -124,7 +124,7 @@ dependencies:
   - pycentroids
   - pyepics >=3.4.2
   - pyfai >=2024.5.0
-  - pyfftw
+  # - pyfftw  # no build for py312 as of 2024-06-20
   - pymatgen >=2024.5.1
   - maggma >=0.66
   - mp-api >=0.41.2
