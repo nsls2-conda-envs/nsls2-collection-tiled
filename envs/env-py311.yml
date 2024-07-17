@@ -1,4 +1,4 @@
-name: 2024-2.2-py311-tiled
+name: 2024-2.3-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -51,7 +51,7 @@ dependencies:
   - dpcmaps
   # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
   - eiger-io
-  - event-model >=1.20
+  - event-model >=1.21
   - fabio
   - ffmpeg >=4.0
   - flake8

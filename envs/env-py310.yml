@@ -1,4 +1,4 @@
-name: 2024-2.2-py310-tiled
+name: 2024-2.3-py310-tiled
 channels:
   - conda-forge
 dependencies:
@@ -12,6 +12,7 @@ dependencies:
   - databroker >=2.0.0b45
   - diffpy.pdffit2
   - diffpy.structure
+  - event-model>=1.21
   - hdf5-external-filter-plugins
   - maggma >=0.66
   - mp-api >=0.41.2
@@ -211,7 +212,6 @@ dependencies:
   - envisage=6.0.1=pyhd8ed1ab_0
   - epics-base=7.0.7.0=h2dfad98_0
   - et_xmlfile=1.1.0=pyhd8ed1ab_0
-  - event-model=1.20.0=pyhd8ed1ab_0
   - exceptiongroup=1.2.0=pyhd8ed1ab_2
   - executing=2.0.1=pyhd8ed1ab_0
   - expat=2.5.0=hcb278e6_1
