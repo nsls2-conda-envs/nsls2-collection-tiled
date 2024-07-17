@@ -33,6 +33,7 @@ dependencies:
   - cmasher
   - conda-pack
   - conftrak >=0.0.9
+  - cookiecutter
   - csxtools >=0.2.1
   - dash
   - dash-bootstrap-components

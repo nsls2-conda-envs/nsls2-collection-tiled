@@ -7,6 +7,7 @@ dependencies:
   - bloptools >=0.7.0
   - blosc-hdf5-plugin
   - conftrak >=0.0.9
+  - cookiecutter
   - dask >=2023.9.0
   - distributed >=2023.9.0
   - databroker >=2.0.0b45
