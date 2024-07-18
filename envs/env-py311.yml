@@ -79,6 +79,7 @@ dependencies:
   - ispyb
   - isstools
   - jedi
+  - julia
   - jupyter
   - jupyterlab
   - ldap3

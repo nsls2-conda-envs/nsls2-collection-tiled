@@ -15,6 +15,7 @@ dependencies:
   - diffpy.structure
   - event-model>=1.21
   - hdf5-external-filter-plugins
+  - julia
   - maggma >=0.66
   - mp-api >=0.41.2
   - pychx >=4.3.1
