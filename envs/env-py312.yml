@@ -124,6 +124,7 @@ dependencies:
   - py-xgboost
   - py4xs
   - pycentroids
+  - pycryptodome
   - pyepics >=3.4.2
   - pyfai >=2024.5.0
   # - pyfftw  # no build for py312 as of 2024-06-20

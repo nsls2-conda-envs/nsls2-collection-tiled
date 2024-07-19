@@ -19,6 +19,7 @@ dependencies:
   - maggma >=0.66
   - mp-api >=0.41.2
   - pychx >=4.3.1
+  - pycryptodome
   - pyfai >=2024.5.0
   - pymatgen >=2024.5.1
   - pyobjcryst
