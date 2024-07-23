@@ -12,6 +12,7 @@ dependencies:
   - distributed >=2023.9.0
   - databroker >=2.0.0b45
   - diffpy.pdffit2
+  - diffpy.pdfgui
   - diffpy.structure
   - event-model>=1.21
   - hdf5-external-filter-plugins
