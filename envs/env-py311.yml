@@ -1,4 +1,4 @@
-name: 2024-2.2-py311-tiled
+name: 2024-2.3-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -33,6 +33,7 @@ dependencies:
   - cmasher
   - conda-pack
   - conftrak >=0.0.9
+  - cookiecutter
   - csxtools >=0.2.1
   - dash
   - dash-bootstrap-components
@@ -44,6 +45,7 @@ dependencies:
   - databroker >=2.0.0b45
   - dictdiffer
   - diffpy.pdffit2
+  - diffpy.pdfgui
   - diffpy.structure
   - discorpy
   - distributed
@@ -51,7 +53,7 @@ dependencies:
   - dpcmaps
   # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
   - eiger-io
-  - event-model >=1.20
+  - event-model >=1.21
   - fabio
   - ffmpeg >=4.0
   - flake8
@@ -78,6 +80,7 @@ dependencies:
   - ispyb
   - isstools
   - jedi
+  - julia
   - jupyter
   - jupyterlab
   - ldap3
@@ -122,6 +125,7 @@ dependencies:
   - py-xgboost
   - py4xs
   - pycentroids
+  - pycryptodome
   - pyepics >=3.4.2
   - pyfai >=2024.5.0
   - pyfftw
@@ -199,36 +203,37 @@ dependencies:
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  - bloptools >=0.7.0
-  - bluesky-darkframes >=0.6.0
-  - caproto
-  - emojis
-  - happi
-  - pexpect
-  # - pydm
-  - pyolog >=4.5.0
-  - pyserial
-  - python-confluent-kafka
-  - pyzenodo3
-  - simple-pid
-  - slack-sdk
-  # Beamline-specific packages
-  - hklpy  # [linux]
-  - hxnfly >=0.0.11
-  - kkcalc
-  - ppmac
-  - pychx >=4.3.1
-  - xpdacq ==1.0.0
-  # Debugging tools:
-  - hunter
-  - logging_tree
-  # Profiling tools:
-  - line_profiler
-  - pyinstrument
-  - pyperformance
-  # ML:
-  - botorch
-  - gpytorch
-  - ortools-python
-  - pytorch
-  - scikit-optimize
+  # Those package will be added to the successfully-resolved conda env:
+  # - bloptools >=0.7.0
+  # - bluesky-darkframes >=0.6.0
+  # - caproto
+  # - emojis
+  # - happi
+  # - pexpect
+  # # - pydm
+  # - pyolog >=4.5.0
+  # - pyserial
+  # - python-confluent-kafka
+  # - pyzenodo3
+  # - simple-pid
+  # - slack-sdk
+  # # Beamline-specific packages
+  # - hklpy  # [linux]
+  # - hxnfly >=0.0.11
+  # - kkcalc
+  # - ppmac
+  # - pychx >=4.3.1
+  # - xpdacq ==1.0.0
+  # # Debugging tools:
+  # - hunter
+  # - logging_tree
+  # # Profiling tools:
+  # - line_profiler
+  # - pyinstrument
+  # - pyperformance
+  # # ML:
+  # - botorch
+  # - gpytorch
+  # - ortools-python
+  # - pytorch
+  # - scikit-optimize
