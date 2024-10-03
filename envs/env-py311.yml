@@ -1,4 +1,4 @@
-name: 2024-2.3-py311-tiled
+name: 2024-3.0-py311-tiled
 channels:
   - conda-forge
 dependencies:
@@ -121,7 +121,7 @@ dependencies:
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
-  - prefect >=2.7
+  - prefect >=2.18
   - py-xgboost
   - py4xs
   - pycentroids
@@ -196,6 +196,7 @@ dependencies:
     - digautoprofiler
     - mimesis
     - ophyd-async[ca,pva]
+    - ortools
     - pyhyperscattering[all]
     - redis-json-dict
   #***************************************************************************#
