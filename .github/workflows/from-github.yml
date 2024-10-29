@@ -140,7 +140,7 @@ jobs:
     steps:
       - run: echo "TEST_CONDA_PACKED_NAME=${{ needs.download_conda_packd_envs.outputs.test_conda_packed_name }}" >> $GITHUB_ENV
       - name: using test-action
-        uses: StaticYolt/testing-conda-environment@v1.2.8
+        uses: nsls2-conda-envs/beamline-integration-test@v0.1
         with:
           run-id: "${{ github.run_id }}"
           test-conda-packed-name: "${{ env.TEST_CONDA_PACKED_NAME }}"
