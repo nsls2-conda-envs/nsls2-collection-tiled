@@ -1,0 +1,22 @@
+name: Beamline Integration Test
+
+on:
+  workflow_dispatch:
+  # TODO: react also on reopening the PR.
+  # pull_request:
+  push:
+
+jobs:
+  version-matrix:
+    strategy:
+      # super important if you want to see all results, even if one fails
+      # fail-fast is true by default
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    # package.yml     : generate and test from specification
+    # from-repo.yml   : test existing env from a github artifact
+    # from-zenodo.yml : test existing env from a zenodo deposition
+    uses: ./.github/workflows/package.yml
+    with:
+      version: ${{ matrix.python-version }}
