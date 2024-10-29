@@ -1,5 +1,5 @@
-name: Conda Pack from Specification
-
+name: Existing Env from Zenodo Deposition
+#Big limitation is that versions are limited, you have to go to configs and change the env name to the version you want
 on:
   workflow_call:
     inputs:
@@ -8,24 +8,24 @@ on:
         type: string
 
 jobs:
-  generate_conda_packd_envs:
+  download_conda_packd_envs:
     #inputs.version is from the workflow call from the main yml file
-    name: conda-pack'd env with Python ${{ inputs.version }}
+    name: ${{ inputs.version }} Python for Conda packed env
     runs-on: ubuntu-latest
     outputs:
       test_conda_packed_name: ${{ env.TEST_ENV_NAME }}
     env:
       TZ: America/New_York
 
-    defaults:
-      run:
-        shell: bash -lvxeo pipefail {0}
+#    defaults:
+#      run:
+#        shell: bash -lvxeo pipefail {0}
 
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
 
-      - name: Install Python for YAML CLI tools
+      - name: Install Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
@@ -33,6 +33,7 @@ jobs:
       - name: Install YAML CLI tools
         run: |
           python3 -m pip install shyaml
+          python3 -m pip install requests
 
       - name: Set env vars
         # Most importantly creates the Conda Environment name whose format is year-version-pythonversion-tiled
@@ -57,75 +58,18 @@ jobs:
   
           env | sort -u
           echo "$GITHUB_ENV"
-      - name: Setup umamba
-        # Steps that creates the Conda environment from the files in envs folder
-        uses: mamba-org/setup-micromamba@v1
-        with:
-          environment-file: envs/env-py${{ env.PYTHONVER }}.yml
-          log-level: info
 
-      - name: Check env
+      - name: Download Artifacts From Zenodo
         run: |
-          # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          conda info
-          conda env list
-          conda list
-          pip list
-          conda config --show-sources
-          conda config --show
-          printenv | sort
-        #original line 1: set -vxeuo pipefail
-
-      - name: Add packages for py311
-        if: inputs.version == '3.11'
-        run: |
-          conda install -c conda-forge \
-            "bloptools>=0.7.0" \
-            "bluesky-darkframes>=0.6.0" \
-            caproto \
-            emojis \
-            happi \
-            pexpect \
-            "pyolog>=4.5.0" \
-            pyserial \
-            python-confluent-kafka \
-            pyzenodo3 \
-            simple-pid \
-            slack-sdk \
-            hklpy \
-            "hxnfly>=0.0.11" \
-            kkcalc \
-            ppmac \
-            "pychx>=4.3.1" \
-            "xpdacq==1.0.0" \
-            hunter \
-            logging_tree \
-            line_profiler \
-            pyinstrument \
-            pyperformance \
-            botorch \
-            gpytorch \
-            ortools-python \
-            pytorch \
-            scikit-optimize
-
-      - name: Export files
-        run: |
-          set -vxeo pipefail
-
           export ARTIFACTS_DIR="$HOME/artifacts"
           echo "ARTIFACTS_DIR=${ARTIFACTS_DIR}" >> $GITHUB_ENV
           if [ ! -d "${ARTIFACTS_DIR}" ]; then
               mkdir -v -p "${ARTIFACTS_DIR}"
           fi
-
-          # conda env export -n ${CONDA_PACK_ENV_NAME} -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml -c conda-forge --override-channels
-          conda env export -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
-          # Per https://conda.github.io/conda-pack/cli.html:
-          conda-pack -o ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz --ignore-missing-files --ignore-editable-packages
-          openssl sha256 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-sha256sum.txt
-          openssl md5 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-md5sum.txt
-          chmod -v 664 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}[.-]*
+          python3 download_from_zenodo.py -r "12207275" -a "${{ secrets.ZENODO_TOKEN }}" -p "${PYTHONVER}"
+          pwd
+          ls
+          ls ${ARTIFACTS_DIR}
 
       - name: Contents of the env .yml file
         run: |
@@ -155,7 +99,7 @@ jobs:
 
   testing_conda_artifact:
     name: ${{ matrix.repos.beamline_acronym }}-${{ inputs.version }}
-    needs: generate_conda_packd_envs
+    needs: download_conda_packd_envs
     env:
       REPO_URL: "https://github.com/${{matrix.repos.org}}/${{matrix.repos.repo}}"
     strategy:
@@ -192,7 +136,7 @@ jobs:
             beamline_acronym: "qas"
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TEST_CONDA_PACKED_NAME=${{ needs.generate_conda_packd_envs.outputs.test_conda_packed_name }}" >> $GITHUB_ENV
+      - run: echo "TEST_CONDA_PACKED_NAME=${{ needs.download_conda_packd_envs.outputs.test_conda_packed_name }}" >> $GITHUB_ENV
       - name: using test-action
         uses: StaticYolt/testing-conda-environment@v1.2.8
         with:
