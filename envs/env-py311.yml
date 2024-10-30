@@ -11,7 +11,7 @@ dependencies:
   - algotom
   - amostra <=1.0
   - analysisstore >=0.0.6
-  - ansiwrap
+  # - ansiwrap
   - area-detector-handlers >=0.0.9
   - arvpyf
   - attrs >=18.0
@@ -184,15 +184,17 @@ dependencies:
   - zbar  # dependency of pyzbar
   # Simulation packages:
   - oscars
-  - shadow3 >=23.1.4
+  # - shadow3 >=23.1.4
   - srwpy >=4.1.0
-  - sirepo-bluesky >=0.6.2
+  # - sirepo-bluesky >=0.6.2
   - xrt
   - zict
   - pipx
   - pip
   - pip:
+    - ansiwrap
     - bluesky >=1.13.0a3
+    - bloptools >=0.7.0
     - digautoprofiler
     - mimesis
     - ophyd-async[ca,pva]
@@ -204,37 +206,35 @@ dependencies:
   #            Dependencies from the `nsls2-collection` metapackage           #
   #                                                                           #
   #***************************************************************************#
-  # Those package will be added to the successfully-resolved conda env:
-  # - bloptools >=0.7.0
-  # - bluesky-darkframes >=0.6.0
-  # - caproto
-  # - emojis
-  # - happi
-  # - pexpect
-  # # - pydm
-  # - pyolog >=4.5.0
-  # - pyserial
-  # - python-confluent-kafka
-  # - pyzenodo3
-  # - simple-pid
-  # - slack-sdk
-  # # Beamline-specific packages
-  # - hklpy  # [linux]
-  # - hxnfly >=0.0.11
-  # - kkcalc
-  # - ppmac
-  # - pychx >=4.3.1
-  # - xpdacq ==1.0.0
-  # # Debugging tools:
-  # - hunter
-  # - logging_tree
-  # # Profiling tools:
-  # - line_profiler
-  # - pyinstrument
-  # - pyperformance
-  # # ML:
-  # - botorch
-  # - gpytorch
+  - bluesky-darkframes >=0.6.0
+  - caproto
+  - emojis
+  - happi
+  - pexpect
+  # - pydm
+  - pyolog >=4.5.0
+  - pyserial
+  - python-confluent-kafka
+  - pyzenodo3
+  - simple-pid
+  - slack-sdk
+  # Beamline-specific packages
+  - hklpy  # [linux]
+  - hxnfly >=0.0.11
+  - kkcalc
+  - ppmac
+  - pychx >=4.3.1
+  - xpdacq ==1.0.0
+  # Debugging tools:
+  - hunter
+  - logging_tree
+  # Profiling tools:
+  - line_profiler
+  - pyinstrument
+  - pyperformance
+  # ML:
+  - botorch
+  - gpytorch
   # - ortools-python
-  # - pytorch
-  # - scikit-optimize
+  - pytorch
+  - scikit-optimize

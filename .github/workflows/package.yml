@@ -84,38 +84,38 @@ jobs:
           conda config --show
           printenv | sort
 
-      - name: Add packages for py311
-        if: matrix.python-version == '3.11'
-        run: |
-          conda install -c conda-forge \
-            "bloptools>=0.7.0" \
-            "bluesky-darkframes>=0.6.0" \
-            caproto \
-            emojis \
-            happi \
-            pexpect \
-            "pyolog>=4.5.0" \
-            pyserial \
-            python-confluent-kafka \
-            pyzenodo3 \
-            simple-pid \
-            slack-sdk \
-            hklpy \
-            "hxnfly>=0.0.11" \
-            kkcalc \
-            ppmac \
-            "pychx>=4.3.1" \
-            "xpdacq==1.0.0" \
-            hunter \
-            logging_tree \
-            line_profiler \
-            pyinstrument \
-            pyperformance \
-            botorch \
-            gpytorch \
-            ortools-python \
-            pytorch \
-            scikit-optimize
+      # - name: Add packages for py311
+      #   if: matrix.python-version == '3.11'
+      #   run: |
+      #     conda install -c conda-forge \
+      #       "bloptools>=0.7.0" \
+      #       "bluesky-darkframes>=0.6.0" \
+      #       caproto \
+      #       emojis \
+      #       happi \
+      #       pexpect \
+      #       "pyolog>=4.5.0" \
+      #       pyserial \
+      #       python-confluent-kafka \
+      #       pyzenodo3 \
+      #       simple-pid \
+      #       slack-sdk \
+      #       hklpy \
+      #       "hxnfly>=0.0.11" \
+      #       kkcalc \
+      #       ppmac \
+      #       "pychx>=4.3.1" \
+      #       "xpdacq==1.0.0" \
+      #       hunter \
+      #       logging_tree \
+      #       line_profiler \
+      #       pyinstrument \
+      #       pyperformance \
+      #       botorch \
+      #       gpytorch \
+      #       ortools-python \
+      #       pytorch \
+      #       scikit-optimize
 
       - name: Export files
         run: |
