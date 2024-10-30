@@ -20,7 +20,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash -lvxeo pipefail {0}
+        shell: bash -leo pipefail {0}
 
     steps:
       - name: Checkout the code
@@ -37,7 +37,7 @@ jobs:
 
       - name: Set env vars
         run: |
-          set -vxeuo pipefail
+          set -euo pipefail
 
           export REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}  # just the repo, as opposed to org/repo
           echo "REPOSITORY_NAME=${REPOSITORY_NAME}" >> $GITHUB_ENV
@@ -75,7 +75,7 @@ jobs:
       - name: Check env
         run: |
           # For reference: https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
-          set -vxeuo pipefail
+          set -euo pipefail
           conda info
           conda env list
           conda list
@@ -119,8 +119,6 @@ jobs:
 
       - name: Export files
         run: |
-          set -vxeo pipefail
-
           export ARTIFACTS_DIR="$HOME/artifacts"
           echo "ARTIFACTS_DIR=${ARTIFACTS_DIR}" >> $GITHUB_ENV
           if [ ! -d "${ARTIFACTS_DIR}" ]; then
