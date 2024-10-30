@@ -99,7 +99,7 @@ dependencies:
   - nexpy >=1.0.7
   - nodejs
   - nsls2-detector-handlers >=0.0.3
-  - nslsii >=0.10.5
+  - nslsii >=0.10.7
   - numexpr >=2.8.0
   - numpy >=1.20
   - nyxtools >=0.0.12
