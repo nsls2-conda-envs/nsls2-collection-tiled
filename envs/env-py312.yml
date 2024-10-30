@@ -99,7 +99,7 @@ dependencies:
   - nexpy >=1.0.7
   - nodejs
   - nsls2-detector-handlers >=0.0.3
-  - nslsii >=0.9.1
+  - nslsii >=0.10.5
   - numexpr >=2.8.0
   - numpy >=1.20
   - nyxtools >=0.0.12
@@ -121,7 +121,7 @@ dependencies:
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
-  - prefect >=2.18
+  - prefect >=2.18,<3
   - py-xgboost
   - py4xs
   - pycentroids
