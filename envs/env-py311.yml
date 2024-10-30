@@ -62,7 +62,6 @@ dependencies:
   - globus-sdk
   - graphviz
   - grid-strategy
-  - h5json
   - h5py !=3.4
   - hdf5-external-filter-plugins
   - hextools >=0.2.1
@@ -200,6 +199,7 @@ dependencies:
     - bluesky >=1.13.0a3
     - bloptools >=0.7.0
     - digautoprofiler
+    - h5json
     - mimesis
     - ophyd-async[ca,pva]
     - ortools
