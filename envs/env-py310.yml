@@ -64,7 +64,7 @@ dependencies:
   - grid-strategy
   - h5py !=3.4
   - hdf5-external-filter-plugins
-  - hextools >=0.2.1
+  - hextools >=0.2.2
   - historydict
   - hvplot
   - hxntools >=0.6.1
