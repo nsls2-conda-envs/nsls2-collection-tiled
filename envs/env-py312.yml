@@ -1,4 +1,4 @@
-name: 2024-2.3-py312-tiled
+name: 2024-3.0-py312-tiled
 channels:
   - conda-forge
 dependencies:
@@ -42,11 +42,12 @@ dependencies:
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b45
+  - databroker >=2.0.0b51
   - dictdiffer
   - diffpy.pdffit2
-  # - diffpy.pdfgui  # no package for py312
+  # - diffpy.pdfgui
   - diffpy.structure
+  - dioptas
   - discorpy
   - distributed
   - doi2bib
@@ -63,7 +64,7 @@ dependencies:
   - grid-strategy
   - h5py !=3.4
   - hdf5-external-filter-plugins
-  - hextools >=0.1.3
+  - hextools >=0.2.2
   - historydict
   - hvplot
   - hxntools >=0.6.1
@@ -81,6 +82,7 @@ dependencies:
   - isstools
   - jedi
   - julia
+  - juliaup
   - jupyter
   - jupyterlab
   - ldap3
@@ -99,7 +101,7 @@ dependencies:
   - nexpy >=1.0.7
   - nodejs
   - nsls2-detector-handlers >=0.0.3
-  - nslsii >=0.9.1
+  - nslsii >=0.10.7
   - numexpr >=2.8.0
   - numpy >=1.20
   - nyxtools >=0.0.12
@@ -121,14 +123,14 @@ dependencies:
   - pillow
   - pocl  # needed by pyopencl, used by the `xrt` package
   - pre-commit
-  - prefect >=2.7
+  - prefect >=2.18,<3
   - py-xgboost
   - py4xs
   - pycentroids
   - pycryptodome
   - pyepics >=3.4.2
   - pyfai >=2024.5.0
-  # - pyfftw  # no build for py312 as of 2024-06-20
+  - pyfftw
   - pymatgen >=2024.5.1
   - maggma >=0.66
   - mp-api >=0.41.2
@@ -147,7 +149,7 @@ dependencies:
   - pyzbar
   - qt >=5.15.0
   - redis-dict
-  # - redis-json-dict
+  - redis-json-dict >=0.2.1
   - redis-py
   - reportlab
   - requests
@@ -190,16 +192,19 @@ dependencies:
   - xrt
   - zict
   - pipx
+  - pixi
   - pip
   - pip:
     - ansiwrap
     - bluesky >=1.13.0a3
     - bloptools >=0.7.0
     - digautoprofiler
+    - h5json
     - mimesis
-    # - ophyd-async[ca]
-    - pyhyperscattering[all]
-    - redis-json-dict
+    - ophyd-async[ca,pva]
+    - ortools
+    - pyhyperscattering[bluesky,ui]
+    - refuse
   #***************************************************************************#
   #                                                                           #
   #            Dependencies from the `nsls2-collection` metapackage           #
