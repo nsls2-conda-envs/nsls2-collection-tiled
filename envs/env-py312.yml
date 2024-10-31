@@ -42,7 +42,7 @@ dependencies:
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b45
+  - databroker >=2.0.0b51
   - dictdiffer
   - diffpy.pdffit2
   # - diffpy.pdfgui
