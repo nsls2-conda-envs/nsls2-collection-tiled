@@ -9,7 +9,7 @@ on:
 
 jobs:
   generate_conda_packd_envs:
-    #inputs.version is from the workflow call from the main yml file
+    #inputs.version is from the workflow call from integrtion.yml
     name: conda-pack'd env with Python ${{ inputs.version }}
     runs-on: ubuntu-latest
     outputs:
@@ -54,7 +54,7 @@ jobs:
           env_name=$(cat configs/config-py${PYTHONVER}.yml | shyaml get-value env_name)
           export CONDA_PACK_ENV_NAME=${env_name}
           echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
-  
+
           env | sort -u
           echo "$GITHUB_ENV"
       - name: Setup umamba
@@ -109,6 +109,19 @@ jobs:
             pytorch \
             scikit-optimize
 
+      - name: Export of the env .yml file
+        run: |
+          conda env export -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
+          cat ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
+
+      # https://github.com/actions/upload-artifact
+      - name: Upload artifacts for the env .yml file
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.CONDA_PACK_ENV_NAME }}.yml
+          path: ${{ env.ARTIFACTS_DIR }}/${{ env.CONDA_PACK_ENV_NAME }}.yml
+          retention-days: 60
+
       - name: Export files
         run: |
           set -vxeo pipefail
@@ -119,31 +132,17 @@ jobs:
               mkdir -v -p "${ARTIFACTS_DIR}"
           fi
 
-          # conda env export -n ${CONDA_PACK_ENV_NAME} -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml -c conda-forge --override-channels
-          conda env export -f ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
           # Per https://conda.github.io/conda-pack/cli.html:
           conda-pack -o ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz --ignore-missing-files --ignore-editable-packages
           openssl sha256 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-sha256sum.txt
           openssl md5 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.tar.gz > ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}-md5sum.txt
           chmod -v 664 ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}[.-]*
 
-      - name: Contents of the env .yml file
-        run: |
-          cat ${ARTIFACTS_DIR}/${CONDA_PACK_ENV_NAME}.yml
-
       - name: Checksum files
         run: |
           cat ${ARTIFACTS_DIR}/*sum.txt
 
-      # https://github.com/actions/upload-artifact
-      - name: Upload artifacts for the env .yml file
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.CONDA_PACK_ENV_NAME }}.yml
-          path: ${{ env.ARTIFACTS_DIR }}/${{ env.CONDA_PACK_ENV_NAME }}.yml
-          retention-days: 60
-
-      - name: Upload artifacts for branch
+      - name: Upload artifacts for release
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.CONDA_PACK_ENV_NAME }}
@@ -202,6 +201,7 @@ jobs:
           repo: "${{ matrix.repos.repo }}"
           branch: "${{ matrix.repos.branch }}"
           beamline-acronym: "${{ matrix.repos.beamline_acronym }}"
+
   report_generation:
     needs: testing_conda_artifact
     if: |
