@@ -1,4 +1,4 @@
-name: 2024-3.0-py312-tiled
+name: 2025-1.0-py312-tiled
 channels:
   - conda-forge
 dependencies:
@@ -42,7 +42,7 @@ dependencies:
   - dask-jobqueue
   - dask-ml
   - dask-xgboost
-  - databroker >=2.0.0b51
+  - databroker >=2.0.0b52
   - dictdiffer
   - diffpy.pdffit2
   # - diffpy.pdfgui
@@ -52,7 +52,7 @@ dependencies:
   - distributed
   - doi2bib
   - dpcmaps
-  # - edrixs  # conflicts caused by the latest numexpr, to resolve later.
+  - edrixs
   - eiger-io
   - event-model >=1.21
   - fabio
@@ -172,7 +172,7 @@ dependencies:
   - suitcase-tiff >=0.4.0
   - suitcase-utils
   - sympy
-  - tiled >=0.1.0b4
+  - tiled >=0.1.0b13
   - toml
   - tomopy >=1.12.2
   - tornado
