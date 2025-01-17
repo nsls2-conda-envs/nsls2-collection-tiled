@@ -59,6 +59,8 @@ dependencies:
   - ffmpeg >=4.0
   - flake8
   - fpdf2
+  - gladier
+  - gladier-tools
   - globus-sdk
   - graphviz
   - grid-strategy
