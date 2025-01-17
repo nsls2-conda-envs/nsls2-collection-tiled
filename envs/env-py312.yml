@@ -60,6 +60,7 @@ dependencies:
   - flake8
   - fpdf2
   - globus-sdk
+  - globus-compute-sdk
   - graphviz
   - grid-strategy
   - h5py !=3.4
@@ -199,6 +200,8 @@ dependencies:
     - bluesky >=1.13.0a3
     - bloptools >=0.7.0
     - digautoprofiler
+    - gladier
+    - gladier-tools
     - h5json
     - mimesis
     - ophyd-async[ca,pva]
