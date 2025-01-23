@@ -18,7 +18,7 @@ dependencies:
   - awkward
   - black
   - blosc-hdf5-plugin
-  # - bluesky >=1.13.0a3
+  - bluesky >=1.13.1rc2
   - bluesky-adaptive >=0.3.1
   - bluesky-kafka >=0.10.0
   - bluesky-live >=0.0.8
@@ -59,6 +59,8 @@ dependencies:
   - ffmpeg >=4.0
   - flake8
   - fpdf2
+  - gladier
+  - gladier-tools
   - globus-sdk
   - globus-compute-sdk
   - graphviz
@@ -197,11 +199,11 @@ dependencies:
   - pip
   - pip:
     - ansiwrap
-    - bluesky >=1.13.0a3
-    - bloptools >=0.7.0
+    # - bluesky >=1.13.0a3
+    # - bloptools >=0.7.0
     - digautoprofiler
-    - gladier
-    - gladier-tools
+    # - gladier
+    # - gladier-tools
     - h5json
     - mimesis
     - ophyd-async[ca,pva]
