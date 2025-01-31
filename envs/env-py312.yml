@@ -221,7 +221,7 @@ dependencies:
   - happi
   - pexpect
   # - pydm
-  - pyolog >=4.5.0
+  - pyolog >=4.5.1
   - pyserial
   - python-confluent-kafka
   - pyzenodo3
